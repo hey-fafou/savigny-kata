@@ -1,0 +1,10 @@
+RewriteEngine ON
+
+# If directory is not found
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# If file is not found
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# We redirect request toward index.php
+RewriteRule (.*) index.php/$1 [L]
