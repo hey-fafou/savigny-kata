@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="test/html; charset=utf-8"/>
     <title><?php echo $pageTitle; ?></title>
     <link rel="stylesheet" href="/savigny-kata/webroot/css/default.css"/>
+    <link href='https://fonts.googleapis.com/css?family=PT+Serif&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
   </head>
   <body>
     <div>
