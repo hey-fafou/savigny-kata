@@ -26,6 +26,8 @@ class Dispatcher {
     // NB: /ControllerName/ActionName/arg1/arg2/..
     call_user_func_array(array($controller, $this->_request->action), 
                          $this->_request->args);
+
+    // Then render the view corresponding the action
     $controller->render($this->_request->action);
   }
 

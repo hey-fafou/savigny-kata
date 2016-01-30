@@ -14,6 +14,11 @@ class Controller {
    * @return a view
    */
   public function render($viewName) {
+    // Child controller class methods might not have
+    // to render the view. They can just initialize
+    // some variable.
+    // But if the view has been rendered, we must avoid
+    // to render it twice.
     if ($this->_isRendered) {
       return false;
     } else {
@@ -27,11 +32,15 @@ class Controller {
       } else {
         $view = ROOT.DS.'view'.DS.$this->_request->controller.DS.$viewName.'.php';
       }
-        ob_start();
-        require $view;
-        $content_for_layout = ob_get_clean();
-        require ROOT.DS.'view'.DS.'layout'.DS.$this->_layout.'.php';
-        $this->_isRendered = true;
+
+      // Recording content to be rendered
+      ob_start();
+      require $view;
+      // Saving all recorded content into variable
+      // that will be printed within the layout wrapper
+      $content_for_layout = ob_get_clean();
+      require ROOT.DS.'view'.DS.'layout'.DS.$this->_layout.'.php';
+      $this->_isRendered = true;
     }
   }
 
