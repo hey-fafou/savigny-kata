@@ -1,7 +1,10 @@
 <?php
 class PagesController extends Controller {
   
-  function index() {
-    $this->render('index');
+  function home() {
+    $this->loadModel('PostsModel');
+    $posts = $this->PostsModel->find(array(
+      'conditions' => 'id=1'
+    ));
   }
 }
