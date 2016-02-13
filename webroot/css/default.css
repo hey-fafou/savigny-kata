@@ -15,6 +15,15 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "PT Serif", sans-serif;
 }
 
+h1 {
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+h2 {
+  font-size: 16px;
+}
+
 html {
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
@@ -26,15 +35,14 @@ body {
   font-family: "PT Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
-  color: #000000;
+  color: #343434;
   background-color: #ffffff;
 }
 
-body > header {
+body header {
   margin: 0px auto 0px auto;
   width: 100%;
   padding: 2em 0px 0px 0px;
   font-weight: 700;
-  text-transform: uppercase;
 }
 
