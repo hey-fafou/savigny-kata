@@ -11,6 +11,7 @@ class Controller {
   }
 
   /**
+   * @param [in] Name of the view to render
    * @return a view
    */
   public function render($viewName) {
@@ -57,5 +58,16 @@ class Controller {
       $this->_vars[$key] = $value;
     }
   }
+
+  /**
+   * Allow to load a model.
+   * @param [in] $modelName name of the model to be loaded
+   */
+  public function loadModel($modelName) {
+    $file = ROOT.DS.'model'.DS.$modelName.'.php';
+    require_once($file);
+    if (!isset($this->$modelName)) {
+      $this->$modelName = new $modelName();
+    }
+  }
 }
-?>
