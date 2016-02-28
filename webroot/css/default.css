@@ -24,6 +24,17 @@ h2 {
   font-size: 16px;
 }
 
+input,
+button,
+select,
+textarea {
+    font-family: "PT Serif", serif;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box
+}
+
 html {
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
@@ -127,26 +138,100 @@ ul {
 }
 
 .top-navigation li {
-  display: inline;
-  margin-right: 25px;
-  white-space: nowrap;
-  border-bottom: 0 solid transparent;
-  list-style-type: none;
+    display: block;
+    list-style-type: none;
 }
 
-.top-navigation a {
-  display: inline;
-  padding: 0;
+@media only screen and (min-width: 59.375em) {
+  .top-navigation li {
+    display: inline;
+    margin-right: 25px;
+    white-space: nowrap;
+    border-bottom: 0 solid transparent;
+  }
+}
+
+.top-navigation li a {
+  display: block;
+  padding: 5px 0;
   border-bottom: 0 solid transparent;
   transition: all 0.2s;
 }
 
+@media only screen and (min-width: 59.375em) {
+  .top-navigation li a {
+    display: inline;
+    padding: 0;
+  }
+}
 
-/*
-body header {
-  margin: 0px auto 0px auto;
-  width: 100%;
-  padding: 2em 0px 0px 0px;
-  font-weight: 700;
-}*/
+.nav-button {
+  font-size: 1.125rem;
+  font-weight: normal;
+  background-color: #111;
+  color: #fff;
+  border: none;
+  padding: .375rem .75rem;
+  transition: .3s;
+  cursor: pointer;
+  border-radius: .21429rem
+}
 
+.nav-button:hover {
+  opacity: 1
+}
+.nav-button:active {
+  transition: 0
+}
+
+.nav-button .nav-lines {
+    margin-right: 10px;
+    margin-bottom: .3rem;
+    display: inline-block;
+    width: 1.5rem;
+    height: .21429rem;
+    background: #fff;
+    border-radius: .10714rem;
+    transition: .3s;
+    position: relative
+}
+
+.nav-button .nav-lines:before,
+.nav-button .nav-lines:after {
+    display: inline-block;
+    width: 1.5rem;
+    height: .21429rem;
+    background: #fff;
+    border-radius: .10714rem;
+    transition: .3s;
+    position: absolute;
+    left: 0;
+    content: '';
+    -webkit-transform-origin: .10714rem center;
+    transform-origin: .10714rem center
+}
+
+.nav-button .nav-lines:before {
+    top: .375rem
+}
+
+.nav-button .nav-lines:after {
+    top: -.375rem
+}
+
+@media only screen and (min-width: 59.375em) {
+  .nav-button {
+      display: none
+  }
+}
+
+.top-navigation ul {
+  max-height: 0;
+  overflow: hidden;
+}
+
+@media only screen and (min-width: 59.375em) {
+  .top-navigation ul {
+      max-height: 30em;
+  }
+}
