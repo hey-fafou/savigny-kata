@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="/savigny-kata/webroot/css/default.css"/>
     <link href='https://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="/savigny-kata/webroot/js/mine.js"></script>
   </head>
   <body>
     <div>

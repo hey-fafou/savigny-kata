@@ -94,11 +94,11 @@ ul {
     font-size: 1.5rem
 }
 
-@media only screen and (min-width: 59.375em) {
+@media only screen and (min-width: 61.250em) {
   .site-name {
     display: inline;
     float: left;
-    width: 21.66667%;
+    width: 19.66667%;
     margin-left: 4.16667%;
     margin-right: 4.16667%;
     margin-bottom: 1em;
@@ -117,11 +117,11 @@ ul {
   display: block;
 }
 
-@media only screen and (min-width: 59.375em) {
+@media only screen and (min-width: 61.250em) {
     .top-navigation {
         display: inline;
         float: left;
-        width: 70%;
+        width: 72%;
         margin-top: 1em;
         margin-left: 0%;
         margin-right: 0%
@@ -142,7 +142,7 @@ ul {
     list-style-type: none;
 }
 
-@media only screen and (min-width: 59.375em) {
+@media only screen and (min-width: 61.250em) {
   .top-navigation li {
     display: inline;
     margin-right: 25px;
@@ -158,7 +158,7 @@ ul {
   transition: all 0.2s;
 }
 
-@media only screen and (min-width: 59.375em) {
+@media only screen and (min-width: 61.250em) {
   .top-navigation li a {
     display: inline;
     padding: 0;
@@ -219,7 +219,28 @@ ul {
     top: -.375rem
 }
 
-@media only screen and (min-width: 59.375em) {
+.nav-button.active .nav-lines {
+    background: transparent;
+}
+.nav-button.active .nav-lines:before,
+.nav-button.active .nav-lines:after {
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    top: 0;
+    width: 1.5rem
+}
+
+.nav-button.active .nav-lines:before {
+    -webkit-transform: rotate3d(0, 0, 1, 45deg);
+    transform: rotate3d(0, 0, 1, 45deg)
+}
+
+.nav-button.active .nav-lines:after {
+    -webkit-transform: rotate3d(0, 0, 1, -45deg);
+    transform: rotate3d(0, 0, 1, -45deg)
+}
+
+@media only screen and (min-width: 61.250em) {
   .nav-button {
       display: none
   }
@@ -230,7 +251,17 @@ ul {
   overflow: hidden;
 }
 
-@media only screen and (min-width: 59.375em) {
+.top-navigation .active+ul {
+  max-height: 30em;
+  overflow: hidden;
+  webkit-transition: max-height .4s;
+  -moz-transition: max-height .4s;
+  -o-transition: max-height .4s;
+  -ms-transition: max-height .4s;
+  transition: max-height .4s
+}
+
+@media only screen and (min-width: 61.250em) {
   .top-navigation ul {
       max-height: 30em;
   }
