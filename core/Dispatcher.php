@@ -3,10 +3,22 @@
 require CORE.DS.'Router.php';
 require CORE.DS.'Request.php';
 
+/**
+ * Class Dispatcher
+ * @brief Analyse url and loads appropriate component to render the view.
+ */
 class Dispatcher {
 
   var $_request;
 
+  /**
+   * Ctor,
+   * <ul>
+   *  <li>Contruct the request by parsing url</li>
+   *  <li>Loads the controller</li>
+   *  <li>Render the view</li>
+   * </ul>
+   */
   function __construct() {
     $this->_request = new Request();
 
@@ -16,7 +28,8 @@ class Dispatcher {
     // Getting the requested controller
     $controller = $this->loadController();
 
-    // Check if action matches a method of the requested controller
+    // After loading controller, we have to check to 
+    // action that the controller has to execute
     if (!in_array($this->_request->action, get_class_methods($controller))) {
       $this->error('Action '.$this->_request->action.' not found within ' 
         .$this->_request->controller.' controller.');
@@ -44,9 +57,9 @@ class Dispatcher {
    * in $_request
    */
   function loadController() {
-    // Upper case the first letter of the controller args in request
-    // so it mathes our naming convention
-    $name = ucfirst($this->_request->controller).'Controller';
+    // Lower case controller to invoke then upper case the first letter 
+    // of the controller args in request so it mathes our naming convention
+    $name = ucfirst(strtolower($this->_request->controller)).'Controller';
 
     // Finding and including the controller file
     $file = ROOT.DS.'controller'.DS.$name.'.php';

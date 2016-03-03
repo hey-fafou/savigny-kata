@@ -6,4 +6,6 @@ define('CORE', ROOT.DS.'core');   // Moteur du site
 define('BASE_URL', dirname(dirname($_SERVER['SCRIPT_NAME'])));  // URL de la racine
 
 require CORE.DS.'includes.php';
+
+// Entry point
 new Dispatcher();

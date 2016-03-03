@@ -1,4 +1,8 @@
 <?php
+/**
+ * Class Controller
+ * @brief Renders the view and gives it all needed variables
+ */
 class Controller {
 
   public $_request;
@@ -6,8 +10,13 @@ class Controller {
   public $_layout = 'default';   // Layout
   private $_isRendered = false;   // If view has been rendered
 
-  function __construct($_request) {
-    $this->_request = $_request;
+  /**
+   * Ctor
+   * @param [in] $request request get in dispatcher for further
+   * use of it hereby
+   */
+  function __construct($request) {
+    $this->_request = $request;
   }
 
   /**
@@ -23,6 +32,7 @@ class Controller {
     if ($this->_isRendered) {
       return false;
     } else {
+      // Import variable inside vars so they can be used in the view
       extract($this->_vars);
       // If path of the view starts with '/' we send directly the viewName
       // strpos return false if occurence not found, or the position of
