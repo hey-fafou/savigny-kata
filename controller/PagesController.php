@@ -11,7 +11,9 @@ class PagesController extends Controller {
    */
   function home() {
     $this->loadModel('PostsModel');
-    $var['posts'] = $this->PostsModel->find(array());
+    $var['posts'] = $this->PostsModel->find(array(
+                    'filters' => array('type' => 'news',
+                                         'id' => 1)));
     $this->set($var);
   }
 }

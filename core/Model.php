@@ -34,6 +34,8 @@ class Model {
                       $dbConfig['login'], 
                       $dbConfig['password'],
                       array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
       // Saving the connection
       Model::$connections[$this->_dbName] = $pdo;
       $this->_db = $pdo; 
@@ -57,10 +59,30 @@ class Model {
    * Find all entry in _table according to some filters.
    * @param [in] $param array containing filters
    */
-  public function find($param) {
+  public function find($param = 0) {
     $sql = 'SELECT * FROM '.$this->_table.' ';
-    if (isset($param['conditions'])) {
-      $sql .= 'WHERE '.$param['conditions'];
+
+    // Construction of filters
+    if (isset($param['filters'])) {
+      $sql .= 'WHERE ';
+
+      // When user has a specific request to make 
+      if (!is_array($param['filters'])) {
+        $sql .= $param['filters'];
+      } else {
+        $cond = array();
+        // Foreach filter of type key => value
+        foreach($param['filters'] as $k=>$v) {
+          // Need to put "" if value is not numeric
+          if (!is_numeric($v)) {
+            $v = '"'.mysql_escape_string($v).'"';
+          }
+          // Adding each conditions
+          $cond[] = "$k=$v";
+        }
+        // separating conditions in request with AND
+        $sql .= implode(' AND ', $cond);
+      }
     }
     $rq = $this->_db->prepare($sql);
     $rq->execute();
