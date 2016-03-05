@@ -46,7 +46,6 @@ class Dispatcher {
 
   /**
    * @return appropriate controller class according to object controller 
-   * in $_request
    */
   function loadController() {
     // Lower case controller to invoke then upper case the first letter 
