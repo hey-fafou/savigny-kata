@@ -31,8 +31,8 @@ class Dispatcher {
     // After loading controller, we have to check to 
     // action that the controller has to execute
     if (!in_array($this->_request->action, get_class_methods($controller))) {
-      $this->error('Action '.$this->_request->action.' not found within ' 
-        .$this->_request->controller.' controller.');
+      $controller = new Controller($this->_request);
+      $controller->e404('Action '.$this->_request->action.' introuvable dans '.$this->_request->controller);
     }
 
     // Calling the action of the requested controller
@@ -42,14 +42,6 @@ class Dispatcher {
 
     // Then render the view corresponding the action
     $controller->render($this->_request->action);
-  }
-
-  function error($msg) {
-    header("HTTP/1.0 404 Not Found");
-    $controller = new Controller($this->_request);
-    $controller->set('messageError', $msg);
-    $controller->render('/errors/404');
-    die();
   }
 
   /**

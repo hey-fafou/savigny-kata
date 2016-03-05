@@ -56,6 +56,17 @@ class Controller {
   }
 
   /**
+   * Handle error 404
+   * @param [in] $msg error message to print
+   */
+  function e404($msg) {
+    header("HTTP/1.0 404 Not Found");
+    $this->set('errMsg', $msg);
+    $this->render('/errors/404');
+    die();
+  }
+
+  /**
    * Add a variable into $_vars
    * @param [in] $key the variable name (can be an array)
    * @param [in] $value value of the variable
