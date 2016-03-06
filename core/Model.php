@@ -17,6 +17,13 @@ class Model {
    * create PDO object after connection to database
    */
   function __construct() {
+    // Get correct table for each child class
+    // Example: PostsModel child class has table posts so we have to 
+    // delete 'Model' and lower case the rest.
+    if ($this->_table === false) {
+      $this->_table = strtolower(str_replace("Model", "", get_class($this)));
+    }
+
     $dbConfig = Config::$databases[$this->_dbName];
 
     // Load only one connection
@@ -45,13 +52,6 @@ class Model {
       } else {
         die('Unable to connect database.');
       }
-    }
-
-    // Get correct table for each child class
-    // Example: PostsModel child class has table posts so we have to 
-    // delete 'Model' and lower case the rest.
-    if ($this->_table === false) {
-      $this->_table = strtolower(str_replace("Model", "", get_class($this)));
     }
   }
 
