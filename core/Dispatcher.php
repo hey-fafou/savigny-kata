@@ -28,9 +28,13 @@ class Dispatcher {
     // Getting the requested controller
     $controller = $this->loadController();
 
-    // After loading controller, we have to check to 
-    // action that the controller has to execute
-    if (!in_array($this->_request->action, get_class_methods($controller))) {
+    // After loading controller, we have to check the action exits within
+    // the controller. 
+    // WARNING: get_class_methods also gives parents methods
+    $controllerMethods = array_diff(get_class_methods($controller), 
+                                    get_class_methods('Controller'));
+
+    if (!in_array($this->_request->action, $controllerMethods)) {
       $controller = new Controller($this->_request);
       $controller->e404('Action '.$this->_request->action.' introuvable dans '.$this->_request->controller);
     }
