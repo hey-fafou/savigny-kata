@@ -88,4 +88,12 @@ class Model {
     $rq->execute();
     return $rq->fetchAll(PDO::FETCH_OBJ);
   }
+
+  /**
+   * Find first entry in _table that matches the request
+   * @param [in] $param array containing filters
+   */
+  public function findFirst($param = 0) {
+    return current($this->find($param));
+  }
 }
