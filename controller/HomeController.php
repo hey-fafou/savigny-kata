@@ -10,8 +10,16 @@ class HomeController extends Controller {
    */
   function index() {
     $this->loadModel('PostsModel');
-    $var['posts'] = $this->PostsModel->find(array(
+    $var['news_posts'] = $this->PostsModel->find(array(
                     'filters' => array('type' => 'news')));
+    $this->set($var);
+  }
+
+  function view($id) {
+    $this->loadModel('PostsModel');
+    $var['news_post'] = $this->PostsModel->findFirst(array(
+      'filters' => array('type' => 'news',
+                         'id' => $id)));
     $this->set($var);
   }
 }
