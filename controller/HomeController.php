@@ -15,11 +15,14 @@ class HomeController extends Controller {
     $this->set($var);
   }
 
-  function view($id) {
+  function view($id = 0) {
     $this->loadModel('PostsModel');
     $var['news_post'] = $this->PostsModel->findFirst(array(
       'filters' => array('type' => 'news',
                          'id' => $id)));
+    if (empty($var['news_post'])) {
+      $this->e404("Page introuvable.");
+    }
     $this->set($var);
   }
 }
