@@ -21,6 +21,7 @@ h1 {
 }
 
 h2 {
+  text-transform: uppercase;
   font-size: 16px;
 }
 
@@ -290,4 +291,12 @@ ul {
   .top-navigation ul {
       max-height: 30em;
   }
+}
+
+.note .body-wrapper {
+  display: inline;
+}
+
+.note {
+  float: left;
 }
