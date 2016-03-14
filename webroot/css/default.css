@@ -154,16 +154,41 @@ ul {
 .top-navigation li a {
   display: block;
   padding: 5px 0;
-  border-bottom: 0 solid transparent;
+  border-bottom: 3px solid transparent;
   transition: all 0.2s;
 }
 
 @media only screen and (min-width: 61.250em) {
   .top-navigation li a {
-    display: inline;
-    padding: 0;
+    display: inline-block;
+    padding: 0 0 2px 0;
   }
 }
+
+@media only screen and (min-width: 61.250em) {
+  .top-navigation li a.violet:hover {
+    border-bottom: 3px solid #21177D;
+  }
+  .top-navigation li a.indigo:hover {
+    border-bottom: 3px solid #425B8A;
+  }
+  .top-navigation li a.blue:hover {
+    border-bottom: 3px solid #26C4EC;
+  }
+  .top-navigation li a.green:hover {
+    border-bottom: 3px solid #708D23;
+  }
+  .top-navigation li a.yellow:hover {
+    border-bottom: 3px solid #C7CF00;
+  }
+  .top-navigation li a.orange:hover {
+    border-bottom: 3px solid #CC5500;
+  }
+  .top-navigation li a.red:hover {
+    border-bottom: 3px solid #960018;
+  }
+}
+
 
 .nav-button {
   font-size: 1.125rem;
