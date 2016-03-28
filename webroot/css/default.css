@@ -84,8 +84,6 @@ ul {
 }
 
 .site-name {
-    display: inline;
-    float: left;
     width: 83.33333%;
     margin-left: 8.33333%;
     margin-right: 8.33333%;
@@ -108,8 +106,6 @@ ul {
 }
 
 .top-navigation {
-  display: inline;
-  float: left;
   width: 83.33333%;
   margin-left: 8.33333%;
   margin-right: 8.33333%;
@@ -293,10 +289,40 @@ ul {
   }
 }
 
-.note .body-wrapper {
-  display: inline;
+.note {
+  width: 83.33333%;
+  margin-left: 8.33333%;
+  margin-right: 8.33333%;
+  margin-top: 1em;
+  float: none;
+  display: none;
 }
 
-.note {
-  float: left;
+.body-wrapper {
+  width: 83.33333%;
+  margin-left: 8.33333%;
+  margin-right: 8.33333%;
+  float: none;
+  display: block;
+}
+
+@media only screen and (min-width: 61.250em) {
+  .note {
+    display: inline;
+    float: left;
+    width: 19.66667%;
+    margin-left: 4.16667%;
+    margin-right: 4.16667%;
+    margin-bottom: 1em;
+    font-size: 1rem;
+  }
+  .body-wrapper {
+    display: inline;
+    float: left;
+    width: 72%;
+    margin-left: 0%;
+    margin-right: 0%;
+    margin-bottom: 1em;
+    font-size: 1rem;
+  }
 }
