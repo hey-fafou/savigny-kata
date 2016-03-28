@@ -11,6 +11,8 @@
   </head>
   <body>
     <div>
+      <?php include(ROOT.DS."view/common/header.php"); ?>
+      <?php include(ROOT.DS."view/common/note.php"); ?>
       <?php echo $content_for_layout; ?>
     </div>
   </body>
