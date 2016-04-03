@@ -6,6 +6,7 @@
 class Request {
 
   public $_url;  // URL called by user
+  public $_page = 1;
   
   /**
    * Ctor
@@ -17,6 +18,12 @@ class Request {
       $this->_url = $_SERVER['PATH_INFO'];
     } else {
       $this->_url = "";
+    }
+
+    if (isset($_GET['page'])) {
+      if (is_numeric($_GET['page'])) {
+        $this->_page = round($_GET['page']);
+      }
     }
   }
 

@@ -107,11 +107,20 @@ class Model {
     if (isset($param['sort'])) {
       // If several column to sort are given
       if (is_array($param['sort'])) {
-        $sql .= ' ORDER BY ';
-        $sql .= implode(', ', $param['sort']);
+        $sql .= ' ORDER BY '.implode(', ', $param['sort']);
       } else {
         // If only one column to sort is given
         $sql .= ' ORDER BY '.$param['sort'];
+      }
+    }
+
+    // Limit on the number of entry to render
+    if (isset($param['limit'])) {
+      // If offset is given
+      if (is_array($param['limit'])) {
+        $sql .= ' LIMIT '.implode(', ', $param['limit']);
+      } else {
+        $sql .= ' LIMIT 0, '.$param['limit'];
       }
     }
 
