@@ -10,6 +10,7 @@ class Model {
   public $_dbName = 'default';
   public $_table = false;
   public $_db;
+  public $_primaryKey = 'id';
 
   /**
    * Ctor
@@ -60,7 +61,24 @@ class Model {
    * @param [in] $param array containing filters
    */
   public function find($param = 0) {
-    $sql = 'SELECT * FROM '.$this->_table.' ';
+    $sql = 'SELECT ';
+
+    // Select field by field
+    if (isset($param['fields'])) {
+      // If several field are given
+      if (is_array($param['fields'])) {
+        $sql .= implode(', ', $param['fields']);
+      } else {
+        // If only one field is given
+        $sql .= $param['fields'];
+      }
+    } else {
+      // If no fields are given, selecting all
+      $sql .= '*';
+    }
+
+    // Select from the table
+    $sql .= ' FROM '.$this->_table.' ';
 
     // Construction of filters
     if (isset($param['filters'])) {
@@ -84,6 +102,19 @@ class Model {
         $sql .= implode(' AND ', $cond);
       }
     }
+
+    // Sorting column that are requested
+    if (isset($param['sort'])) {
+      // If several column to sort are given
+      if (is_array($param['sort'])) {
+        $sql .= ' ORDER BY ';
+        $sql .= implode(', ', $param['sort']);
+      } else {
+        // If only one column to sort is given
+        $sql .= ' ORDER BY '.$param['sort'];
+      }
+    }
+
     $rq = $this->_db->prepare($sql);
     $rq->execute();
     return $rq->fetchAll(PDO::FETCH_OBJ);
@@ -95,5 +126,16 @@ class Model {
    */
   public function findFirst($param = 0) {
     return current($this->find($param));
+  }
+
+  /**
+   * Count number of entry in _table that matches the request
+   * @param [in] $param array containing filters
+   */
+  public function findCount($param = 0) {
+    $this->find(array(
+      'fields' => 'COUNT('.$this->_primaryKey.') AS count',
+      'filters' => $param
+    ));
   }
 }
