@@ -19,10 +19,11 @@ class Request {
     } else {
       $this->_url = "";
     }
-
     if (isset($_GET['page'])) {
       if (is_numeric($_GET['page'])) {
-        $this->_page = round($_GET['page']);
+        if ($_GET['page'] > 0) {
+          $this->_page = round($_GET['page']);
+        }
       }
     }
   }
