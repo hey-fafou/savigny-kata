@@ -9,7 +9,7 @@ class HomeController extends Controller {
    * for rendering home page
    */
   function index() {
-    $news_per_page = 2;
+    $news_per_page = 3;
     $this->loadModel('PostsModel');
     $filters = array('type' => 'news');
     $fields = array('*', 'DATE_FORMAT(date, \'%d/%m/%Y à %Hh%i\') AS date_fr');
