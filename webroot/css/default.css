@@ -363,3 +363,21 @@ ul {
   font-style: italic;
   margin-top: 0px;
 }
+
+.pagination ul {
+  overflow: hidden;
+  margin: 0px;
+  padding: 0px;
+  clear: both;
+  list-style-type: none;
+}
+
+.pagination li {
+  list-style-type: none;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.pagination li a {
+  display: inline-block;
+}
