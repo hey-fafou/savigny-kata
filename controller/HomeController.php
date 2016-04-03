@@ -25,9 +25,14 @@ class HomeController extends Controller {
 
   function view($id = 0) {
     $this->loadModel('PostsModel');
+    $filters = array('type' => 'news',
+                     'id' => $id);
+    $fields = array('*', 'DATE_FORMAT(date, \'%d/%m/%Y à %Hh%i\') AS date_fr');
+    $sort = 'STR_TO_DATE(date, \'%Y-%m-%d %H:%i:%s\') DESC';
     $var['news_post'] = $this->PostsModel->findFirst(array(
-      'filters' => array('type' => 'news',
-                         'id' => $id)));
+      'filters' => $filters,
+      'fields' => $fields,
+      'sort' => $sort));
     if (empty($var['news_post'])) {
       $this->e404("Page introuvable.");
     }
