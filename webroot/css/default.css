@@ -93,18 +93,6 @@ ul {
     font-size: 1.5rem
 }
 
-@media only screen and (min-width: 61.250em) {
-  .site-name {
-    display: inline;
-    float: left;
-    width: 19.66667%;
-    margin-left: 4.16667%;
-    margin-right: 4.16667%;
-    margin-bottom: 1em;
-    font-size: 1rem;
-  }
-}
-
 .top-navigation {
   width: 83.33333%;
   margin-left: 8.33333%;
@@ -115,6 +103,15 @@ ul {
 }
 
 @media only screen and (min-width: 61.250em) {
+    .site-name {
+      display: inline;
+      float: left;
+      width: 19.66667%;
+      margin-left: 4.16667%;
+      margin-right: 4.16667%;
+      margin-bottom: 1em;
+      font-size: 1rem;
+    }
     .top-navigation {
         display: inline;
         float: left;
@@ -139,15 +136,6 @@ ul {
     list-style-type: none;
 }
 
-@media only screen and (min-width: 61.250em) {
-  .top-navigation li {
-    display: inline;
-    margin-right: 25px;
-    white-space: nowrap;
-    border-bottom: 0 solid transparent;
-  }
-}
-
 .top-navigation li a {
   display: block;
   padding: 5px 0;
@@ -156,13 +144,16 @@ ul {
 }
 
 @media only screen and (min-width: 61.250em) {
+  .top-navigation li {
+    display: inline;
+    margin-right: 25px;
+    white-space: nowrap;
+    border-bottom: 0 solid transparent;
+  }
   .top-navigation li a {
     display: inline-block;
     padding: 0 0 2px 0;
   }
-}
-
-@media only screen and (min-width: 61.250em) {
   .top-navigation li a.violet:hover {
     border-bottom: 3px solid #21177D;
   }
@@ -289,7 +280,8 @@ ul {
   }
 }
 
-.note {
+.aside {
+  font-family: "PT Serif",serif;
   width: 83.33333%;
   margin-left: 8.33333%;
   margin-right: 8.33333%;
@@ -298,16 +290,28 @@ ul {
   display: none;
 }
 
+.aside h3 {
+  text-transform: none;
+  font-size: 16px;
+}
+
 .body-wrapper {
+  font-family: "PT Serif",serif;
   width: 83.33333%;
   margin-left: 8.33333%;
   margin-right: 8.33333%;
+  margin-top: 1em;
   float: none;
   display: block;
 }
 
+.body-wrapper h1,h2 {
+  text-transform: none;
+}
+
+
 @media only screen and (min-width: 61.250em) {
-  .note {
+  .aside {
     display: inline;
     float: left;
     width: 19.66667%;
