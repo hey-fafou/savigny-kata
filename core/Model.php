@@ -133,9 +133,10 @@ class Model {
    * @param [in] $param array containing filters
    */
   public function findCount($param = 0) {
-    return $this->find(array(
+    $r = $this->findFirst(array(
       'fields' => 'COUNT('.$this->_primaryKey.') AS count',
       'filters' => $param
     ));
+    return $r->count;
   }
 }

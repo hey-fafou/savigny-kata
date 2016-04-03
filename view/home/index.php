@@ -12,4 +12,11 @@
         <p class="read-more"><a href="<?php echo BASE_URL.'/home/view/'.$v->id;?>"</a>Lire la suite &rarr;</p>
       </div> 
     <?php } ?>
+    <div class="pagination">
+      <ul>
+        <?php for($i = 1; $i <= $page; $i++) { ?>
+          <li><a href="#"><?php echo $i; ?></a></li>
+        <?php } ?>
+      </ul>
+    </div>
 </div>
