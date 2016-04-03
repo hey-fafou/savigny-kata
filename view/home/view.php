@@ -6,5 +6,5 @@
     <span class="date"><?php echo $news_post->date_fr;?></span>
   </h2>
   
-  <?php echo $news_post->content; ?>
+  <?php echo nl2br($news_post->content); ?>
 </div>
