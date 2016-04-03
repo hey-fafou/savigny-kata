@@ -335,6 +335,15 @@ ul {
   margin-bottom: 1.5em;
 }
 
+.date {
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.post-title {
+  text-transform: none;
+}
+
 .post-content {
   white-space: nowrap;
   overflow: hidden;
