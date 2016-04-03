@@ -309,7 +309,6 @@ ul {
   text-transform: none;
 }
 
-
 @media only screen and (min-width: 61.250em) {
   .aside {
     display: inline;
@@ -329,4 +328,22 @@ ul {
     margin-bottom: 1em;
     font-size: 1rem;
   }
+}
+
+.home-news-post {
+  max-width: 600px;
+  margin-bottom: 1.5em;
+}
+
+.post-content {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0px;
+}
+
+.read-more {
+  font-size: 10px;
+  font-style: italic;
+  margin-top: 0px;
 }
