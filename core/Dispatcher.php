@@ -1,8 +1,5 @@
 <?php
 
-require CORE.DS.'Router.php';
-require CORE.DS.'Request.php';
-
 /**
  * Class Dispatcher
  * @brief Analyse url and loads appropriate component to render the view.
