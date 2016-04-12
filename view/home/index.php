@@ -16,7 +16,7 @@
       <ul>
         <?php for($i = 1; $i <= $page; $i++) { ?>
           <li>
-            <a href="?page=<?php echo $i?>">
+            <a href="<?php echo BASE_URL.'/home?page='.$i; ?>">
               <?php echo $i; ?>
             </a>
           </li>
