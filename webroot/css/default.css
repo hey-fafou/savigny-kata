@@ -301,6 +301,11 @@ ul {
 
 .aside .asps-logo {
   margin-top: 2em;
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
 }
 
 .body-wrapper {
