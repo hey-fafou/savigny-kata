@@ -14,13 +14,23 @@
     <?php } ?>
     <div class="pagination">
       <ul>
-        <?php for($i = 1; $i <= $page; $i++) { ?>
+          <li>
+            <a href="<?php echo BASE_URL.'/home?page='.max(($page-1), 1); ?>">
+            <img src="<?php echo BASE_URL.'/webroot/img/icons/left_arrow.png' ?>" alt="" title="Précédent" />
+            </a>
+          </li>
+        <?php for($i = 1; $i <= $pages; $i++) { ?>
           <li>
             <a href="<?php echo BASE_URL.'/home?page='.$i; ?>">
               <?php echo $i; ?>
             </a>
           </li>
         <?php } ?>
+        <li>
+          <a href="<?php echo BASE_URL.'/home?page='.min(($page+1), $pages); ?>">
+          <img src="<?php echo BASE_URL.'/webroot/img/icons/right_arrow.png' ?>" alt="" title="Suivant" />
+          </a>
+        </li>
       </ul>
     </div>
 </div>

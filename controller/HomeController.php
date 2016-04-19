@@ -9,7 +9,7 @@ class HomeController extends Controller {
    * for rendering home page
    */
   function index() {
-    $news_per_page = 3;
+    $news_per_page = 2;
     $this->loadModel('PostsModel');
     $filters = array('type' => 'news');
     $fields = array('*', 'DATE_FORMAT(date, \'%d/%m/%Y à %Hh%i\') AS date_fr');
@@ -19,7 +19,8 @@ class HomeController extends Controller {
       'fields' => $fields,
       'sort' => $sort,
       'limit' => array($news_per_page*($this->_request->_page - 1), $news_per_page)));
-    $var['page'] = ceil(($this->PostsModel->findCount($filters))/$news_per_page);
+    $var['pages'] = ceil(($this->PostsModel->findCount($filters))/$news_per_page);
+    $var['page'] = $this->_request->_page;
     $this->set($var);
   }
 
