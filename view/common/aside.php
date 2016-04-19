@@ -15,7 +15,7 @@
   </div>
   <div class="asps-logo">
     <a href="http://www.aspsavigny.fr" target="blank">
-      <img src="/savigny-kata/webroot/img/logo/asps.jpg" alt "" title="Lien vers le site de l'ASPS"/>
+      <img src="<?php echo BASE_URL.'/webroot/img/logo/asps.jpg'?>" alt="" title="Lien vers le site de l'ASPS"/>
     </a>
   </div>
 </div>
