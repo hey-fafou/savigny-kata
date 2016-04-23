@@ -91,4 +91,11 @@ class Controller {
       $this->$modelName = new $modelName();
     }
   }
+
+  function redirect($url, $code = NULL) {
+    if ($code == 301) {
+      header("HTTP/1.1 301 Moved Permanently");
+    }
+    header("Location: ".$url);
+  } 
 }
