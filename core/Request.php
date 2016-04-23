@@ -5,19 +5,20 @@
  */
 class Request {
 
-  public $_url = "";  // URL called by user
-  public $_page = 1;
+  public $url = "";  // URL called by user
+  public $page = 1;
+  public $prefix = "";
 
   /**
    * Ctor
-   * Initialize _url with routes created in config.php
+   * Initialize url with routes created in config.php
    */
   function __construct() {
     // Each pages can have pagination.
     if (isset($_GET['page'])) {
       if (is_numeric($_GET['page'])) {
         if ($_GET['page'] > 0) {
-          $this->_page = round($_GET['page']);
+          $this->page = round($_GET['page']);
         }
       }
     }
@@ -43,13 +44,13 @@ class Request {
       // Update parameters
       $params = Router::$routes['parameters'];
     }
-    $this->_url = $controller.'/'.$action.'/'.$params;     
+    $this->url = $controller.'/'.$action.'/'.$params;     
   }
 
   /**
    * @return user URL
    */
   function getURL() {
-    return $this->_url;
+    return $this->url;
   }
 } 

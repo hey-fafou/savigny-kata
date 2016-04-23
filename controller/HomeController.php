@@ -18,9 +18,9 @@ class HomeController extends Controller {
       'filters' => $filters,
       'fields' => $fields,
       'sort' => $sort,
-      'limit' => array($news_per_page*($this->_request->_page - 1), $news_per_page)));
+      'limit' => array($news_per_page*($this->_request->page - 1), $news_per_page)));
     $var['pages'] = ceil(($this->PostsModel->findCount($filters))/$news_per_page);
-    $var['page'] = $this->_request->_page;
+    $var['page'] = $this->_request->page;
     $this->set($var);
   }
 
@@ -38,5 +38,10 @@ class HomeController extends Controller {
       $this->e404("Page introuvable.");
     }
     $this->set($var);
+  }
+
+  /*__________ ADMIN __________*/
+
+  function admin_index() {
   }
 }
