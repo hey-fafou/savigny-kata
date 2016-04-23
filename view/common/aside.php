@@ -6,7 +6,7 @@
     77176 - Savigny-le-Temple<br/>
   </div>
   <div class="external-links">
-    <h3>Liens</h3>
+    <h3>Liens externes</h3>
       <ul>
         <li><a href = "http://www.ffkama.fr/">La FFKAMA</a></li>
         <li><a href = "http://www.ffkarate.fr/seineetmarne/">La ligue 77</a></li>
