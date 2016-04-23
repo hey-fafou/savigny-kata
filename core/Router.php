@@ -5,6 +5,16 @@
  */
 class Router {
   static $routes = array();
+  static $prefix = array();
+
+  /**
+   * Associate an url key word to a prefix.
+   * @param [in] $key word
+   * @param [in] $prefix redirection
+   */
+  static function setPrefix($key, $prefix) {
+    self::$prefix[$key] = $prefix;
+  }
 
   /**
    * Parse a given url
