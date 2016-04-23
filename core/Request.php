@@ -27,21 +27,21 @@ class Request {
     $params = "";
 
     // Controller is specified
-    if (count(Router::$routes) >= 2) {
+    if (isset(Router::$routes['controller'])) {
       // Update controller
-      $controller = Router::$routes[1];
+      $controller = Router::$routes['controller'];
     }
 
     // Action is also specified
-    if (count(Router::$routes) >= 3) {
+    if (isset(Router::$routes['action'])) {
       // Update action
-      $action = Router::$routes[2];
+      $action = Router::$routes['action'];
     }
 
     // Parameters are given
-    if (count(Router::$routes) == 4) {
+    if (isset(Router::$routes['parameters'])) {
       // Update parameters
-      $params = Router::$routes[3];
+      $params = Router::$routes['parameters'];
     }
     $this->_url = $controller.'/'.$action.'/'.$params;     
   }

@@ -13,17 +13,23 @@ class Config {
     );    
 }
 
+// Admin prefix declaration
+Router::setPrefix('sudo', 'admin');
+
 $url = $_SERVER['REQUEST_URI'];
 
 // expected url: /savigny-kata/controller/action/param1/param2/
 // Route 1: BASE_URL => /savigny-kata
-Router::connect('([a-z\-]+)', $url);
+Router::connect('([a-z\-]+)', $url, 'base');
 
-// Route 2: Controller
-Router::connect('(^[a-z]+$)', $url);
+// Route 2: Prefix
+Router::checkPrefix('(^[a-z]+)', $url, 'prefix');
 
-// Route 3: Action
-Router::connect('(^[a-z]+$)', $url);
+// Route 3: Controller
+Router::connect('(^[a-z]+)', $url, 'controller');
 
-// Route 4: Parameters
-Router::connect('(^[a-zA-Z0-9/]+$)', $url);
+// Route 4: Action
+Router::connect('(^[a-z]+)', $url, 'action');
+
+// Route 5: Parameters
+Router::connect('(^[a-zA-Z0-9/]+$)', $url, 'parameters');

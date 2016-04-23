@@ -5,7 +5,7 @@
  */
 class Router {
   static $routes = array();
-  static $prefix = array();
+  static $prefixes = array();
 
   /**
    * Associate an url key word to a prefix.
@@ -13,7 +13,7 @@ class Router {
    * @param [in] $prefix redirection
    */
   static function setPrefix($key, $prefix) {
-    self::$prefix[$key] = $prefix;
+    self::$prefixes[$key] = $prefix;
   }
 
   /**
@@ -33,14 +33,23 @@ class Router {
     $request->args = array_slice($args, 2);
   }
 
-  static function connect($pattern, &$url) {
-    $r = array();
-
+  static function connect($pattern, &$url, $key) {
     $pattern = '/'.str_replace('/', '\/', $pattern).'/';
 
     if (preg_match($pattern, $url, $match)) {
-      self::$routes[] = $match[1];
+      self::$routes[$key] = $match[1];
       $url = trim(str_replace($match[1], '', $url), '/');
     } 
+  }
+
+  static function checkPrefix($pattern, &$url, $key) {
+    $pattern = '/'.str_replace('/', '\/', $pattern).'/';
+
+    if (preg_match($pattern, $url, $match)) {
+      if (in_array($match[1], array_keys(self::$prefixes))) {
+        self::$routes[$key] = $match[1];
+        $url = trim(str_replace($match[1], '', $url), '/');
+      } 
+    }
   }
 } 
