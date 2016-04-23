@@ -7,7 +7,7 @@ class Request {
 
   public $url = "";  // URL called by user
   public $page = 1;
-  public $prefix = "";
+  public $prefix = false;
 
   /**
    * Ctor
