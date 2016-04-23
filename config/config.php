@@ -23,7 +23,7 @@ $url = $_SERVER['REQUEST_URI'];
 Router::connect('([a-z\-]+)', $url, 'base');
 
 // Route 2: Prefix
-Router::checkPrefix('(^[a-z]+)', $url, 'prefix');
+Router::checkPrefix('(^[a-z]+)', $url);
 
 // Route 3: Controller
 Router::connect('(^[a-z]+)', $url, 'controller');
