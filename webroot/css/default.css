@@ -50,6 +50,14 @@ body {
   background-color: #ffffff;
 }
 
+p {
+  display: block;
+  -webkit-margin-before: 0.5em;
+  -webkit-margin-after: 0.5em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+}
+
 ul {
   -webkit-margin-before: 1em;
   -webkit-margin-after: 1em;
@@ -57,6 +65,7 @@ ul {
   -webkit-margin-end: 0px;
   -webkit-padding-start: 40px;
 }
+
  a {
    text-decoration: none;
    color: #343434;
@@ -333,6 +342,17 @@ ul {
   filter: alpha(opacity=50); /* For IE8 and earlier */
 }
 
+/*__________ FLASH STYLE __________*/
+
+.flash {
+  text-align: center;
+}
+
+.flash.success {
+   background-color: #4CAF50;
+   color: white;
+}
+
 /*__________ BODY STYLE __________*/
 .body-wrapper {
   font-family: "PT Serif",serif;
@@ -355,6 +375,15 @@ ul {
     width: 19.66667%;
     margin-left: 4.16667%;
     margin-right: 4.16667%;
+    margin-bottom: 1em;
+    font-size: 1rem;
+  }
+  .flash {
+    display: inline;
+    float: left;
+    width: 60%;
+    margin-left: 0%;
+    margin-right: 12%;
     margin-bottom: 1em;
     font-size: 1rem;
   }
