@@ -61,6 +61,11 @@ class Dispatcher {
     require $file;
 
     // Construct controller object with the request
-    return new $name($this->_request);
+    $controller = new $name($this->_request);
+
+    // Initilization of the session
+    $controller->Session = new Session();
+
+    return $controller;
   }
 } 

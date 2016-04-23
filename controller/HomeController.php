@@ -62,6 +62,7 @@ class HomeController extends Controller {
   function admin_delete($id) {
     $this->loadModel('PostsModel');
     $this->PostsModel->delete($id);
+    $this->Session->setFlash('Le contenu a bien été supprimé.');
     $this->redirect(BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/index');
   }
 }
