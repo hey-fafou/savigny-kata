@@ -148,4 +148,9 @@ class Model {
     ));
     return $r->count;
   }
+
+  public function delete($id) {
+    $sql = "DELETE FROM $this->_table WHERE $this->_primaryKey = $id";
+    $this->_db->query($sql);
+  }
 }
