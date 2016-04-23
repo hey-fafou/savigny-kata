@@ -1,4 +1,5 @@
 <?php
+require CORE.DS.'functions.php';
 require CORE.DS.'Router.php';
 
 require ROOT.DS.'config'.DS.'config.php';
