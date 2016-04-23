@@ -43,5 +43,25 @@ class HomeController extends Controller {
   /*__________ ADMIN __________*/
 
   function admin_index() {
+    $news_per_page = 10;
+    $this->loadModel('PostsModel');
+    $filters = array('type' => 'news');
+    $fields = array('id, title');
+    $sort = 'STR_TO_DATE(date, \'%Y-%m-%d %H:%i:%s\') DESC';
+    $var['news_posts'] = $this->PostsModel->find(array(
+      'filters' => $filters,
+      'fields' => $fields,
+      'sort' => $sort,
+      'limit' => array($news_per_page*($this->_request->page - 1), $news_per_page)));
+    $var['total_posts'] = $this->PostsModel->findCount($filters);
+    $var['pages'] = ceil($var['total_posts']/$news_per_page);
+    $var['page'] = $this->_request->page;
+    $this->set($var);
+  }
+
+  function admin_delete($id) {
+    $this->loadModel('PostsModel');
+    $this->PostsModel->delete($id);
+    $this->redirect(BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/index');
   }
 }

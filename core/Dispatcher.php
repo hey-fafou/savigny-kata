@@ -24,6 +24,10 @@ class Dispatcher {
 
     // Getting the requested controller
     $controller = $this->loadController();
+    $action = $this->_request->action;
+    if ($this->_request->prefix) {
+      $action = $this->_request->prefix.'_'.$action;
+    }
 
     // After loading controller, we have to check the action exits within
     // the controller. 
@@ -31,18 +35,17 @@ class Dispatcher {
     $controllerMethods = array_diff(get_class_methods($controller), 
                                     get_class_methods('Controller'));
 
-    if (!in_array($this->_request->action, $controllerMethods)) {
+    if (!in_array($action, $controllerMethods)) {
       $controller = new Controller($this->_request);
-      $controller->e404('Action '.$this->_request->action.' introuvable dans '.$this->_request->controller);
+      $controller->e404('Action '.$action.' introuvable dans '.$this->_request->controller);
     }
 
     // Calling the action of the requested controller
     // NB: /ControllerName/ActionName/arg1/arg2/..
-    call_user_func_array(array($controller, $this->_request->action), 
-                         $this->_request->args);
+    call_user_func_array(array($controller, $action), $this->_request->args);
 
     // Then render the view corresponding the action
-    $controller->render($this->_request->action);
+    $controller->render($action);
   }
 
   /**
