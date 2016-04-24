@@ -29,10 +29,21 @@ button,
 select,
 textarea {
     font-family: "PT Serif", serif;
+    padding: 5px;
+    border: 2px solid #dadada;
+    border-radius: 4px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
     box-sizing: border-box
+}
+
+input:focus,
+button:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #9ecaed;
 }
 
 html {
@@ -449,6 +460,38 @@ ul {
 table a {
   margin-right: 15px;
   color: 	#4682B4;
+}
+
+.input-wrapper:before,
+.input-wrapper:after {
+    display: table;
+    content: "";
+    line-height: 0
+}
+
+.input-wrapper:after {
+    clear: both
+}
+.input-wrapper {
+  margin-top: 2em;
+}
+
+label, .input {
+  display: inline-block;
+  float: left;
+}
+
+label {
+  width: 20%;
+  text-align: right;
+}
+
+.input {
+  width: 70%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 1em;
+  font-size: 1rem;
 }
 
 /*__________ ADMIN HOME STYLE __________*/
