@@ -29,11 +29,9 @@ class HomeController extends Controller {
     $filters = array('type' => 'news',
                      'id' => $id);
     $fields = array('*', 'DATE_FORMAT(date, \'%d/%m/%Y à %Hh%i\') AS date_fr');
-    $sort = 'STR_TO_DATE(date, \'%Y-%m-%d %H:%i:%s\') DESC';
     $var['news_post'] = $this->PostsModel->findFirst(array(
       'filters' => $filters,
-      'fields' => $fields,
-      'sort' => $sort));
+      'fields' => $fields));
     if (empty($var['news_post'])) {
       $this->e404("Page introuvable.");
     }
@@ -64,5 +62,16 @@ class HomeController extends Controller {
     $this->PostsModel->delete($id);
     $this->Session->setFlash('Le contenu a bien été supprimé.');
     $this->redirect(BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/index');
+  }
+
+  function admin_edit($id) {
+    $this->loadModel('PostsModel');
+    $filters = array('type' => 'news',
+                     'id' => $id);
+    $fields = array('*', 'DATE_FORMAT(date, \'%d/%m/%Y à %Hh%i\') AS date_fr');
+    $var['news_post'] = $this->PostsModel->findFirst(array(
+      'filters' => $filters,
+      'fields' => $fields));
+    $this->set($var);
   }
 }
