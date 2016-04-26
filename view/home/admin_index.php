@@ -12,6 +12,15 @@
       </tr>
     </thead>
     <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>
+            <a href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/add/' ?>">
+              Ajouter
+            </a>
+          </td>
+        </tr>
       <?php foreach($news_posts as $k => $v) { ?>
         <tr>
           <td><?php echo $v->id;?></td>
