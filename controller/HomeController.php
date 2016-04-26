@@ -78,4 +78,12 @@ class HomeController extends Controller {
       'fields' => $fields));
     $this->set($var);
   }
+
+  function admin_add() {
+    $this->loadModel('PostsModel');
+    if (!empty($_POST)) {
+      $this->PostsModel->save($_POST);
+      $this->redirect(BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/index');
+    }
+  }
 }

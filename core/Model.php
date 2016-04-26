@@ -159,13 +159,17 @@ class Model {
     $fields = array();
     $d = array();
 
+    foreach($data as $k => $v) {
+      $fields[] = "$k=:$k";
+      $d[":$k"] = $v;
+    }
+
     if (isset($data['id']) && !empty($data['id'])) {
-      $key = array_shift($data);
-      foreach($data as $k => $v) {
-        $fields[] = "$k=:$k";
-        $d[":$k"] = $v;
-      }
+      $key = $data['id'];
+      unset($data['id']);
       $sql = 'UPDATE '.$this->_table.' SET '.implode(',', $fields).' WHERE '.$this->_primaryKey.'='.$key;
+    } else {
+      $sql = 'INSERT INTO '.$this->_table.' SET '.implode(',', $fields);
     }
 
     $rq = $this->_db->prepare($sql);
