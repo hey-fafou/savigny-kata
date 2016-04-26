@@ -340,7 +340,7 @@ ul {
 }
 
 .aside a {
-  color: 	#4682B4;
+  color: #000080;
 }
 
 .aside .external-links li {
@@ -472,26 +472,37 @@ table a {
 .input-wrapper:after {
     clear: both
 }
-.input-wrapper {
-  margin-top: 2em;
-}
 
-label, .input {
+.input-wrapper label, .input-wrapper .input {
   display: inline-block;
   float: left;
 }
 
-label {
+.input-wrapper label {
   width: 20%;
   text-align: right;
 }
 
-.input {
+.input-wrapper .input {
   width: 70%;
   margin-left: 5%;
   margin-right: 5%;
   margin-bottom: 1em;
   font-size: 1rem;
+}
+
+.input-wrapper .actions {
+  width: 70%;
+  margin-left: 25%;
+  margin-right: 5%;
+  font-size: 1rem;
+}
+
+.input-wrapper .submit-btn {
+  cursor: pointer;
+  color: white;
+  background-color: #000080;
+  border: none;
 }
 
 /*__________ ADMIN HOME STYLE __________*/
