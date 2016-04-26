@@ -153,4 +153,23 @@ class Model {
     $sql = "DELETE FROM $this->_table WHERE $this->_primaryKey = $id";
     $this->_db->query($sql);
   }
+
+  public function save($data) {
+    $sql = "";
+    $fields = array();
+    $d = array();
+
+    if (isset($data['id']) && !empty($data['id'])) {
+      $key = array_shift($data);
+      foreach($data as $k => $v) {
+        $fields[] = "$k=:$k";
+        $d[":$k"] = $v;
+      }
+      $sql = 'UPDATE '.$this->_table.' SET '.implode(',', $fields).' WHERE '.$this->_primaryKey.'='.$key;
+    }
+
+    $rq = $this->_db->prepare($sql);
+    $rq->execute($d);
+    return true;
+  }
 }

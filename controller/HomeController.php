@@ -66,8 +66,12 @@ class HomeController extends Controller {
 
   function admin_edit($id) {
     $this->loadModel('PostsModel');
+    if (!empty($_POST)) {
+      $this->PostsModel->save($_POST);
+      $this->redirect(BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/index');
+    }
     $filters = array('type' => 'news',
-                     'id' => $id);
+      'id' => $id);
     $fields = array('*', 'DATE_FORMAT(date, \'%d/%m/%Y à %Hh%i\') AS date_fr');
     $var['news_post'] = $this->PostsModel->findFirst(array(
       'filters' => $filters,
