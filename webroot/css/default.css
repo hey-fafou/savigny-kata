@@ -193,26 +193,8 @@ ul {
     display: inline-block;
     padding: 0 0 2px 0;
   }
-  .top-navigation li a.violet:hover {
-    border-bottom: 3px solid #21177D;
-  }
-  .top-navigation li a.indigo:hover {
-    border-bottom: 3px solid #425B8A;
-  }
-  .top-navigation li a.blue:hover {
-    border-bottom: 3px solid #26C4EC;
-  }
-  .top-navigation li a.green:hover {
-    border-bottom: 3px solid #708D23;
-  }
-  .top-navigation li a.yellow:hover {
-    border-bottom: 3px solid #C7CF00;
-  }
-  .top-navigation li a.orange:hover {
-    border-bottom: 3px solid #CC5500;
-  }
-  .top-navigation li a.red:hover {
-    border-bottom: 3px solid #960018;
+  .top-navigation li a:hover {
+    border-bottom: 3px solid #000080;
   }
 }
 
@@ -504,5 +486,3 @@ table a {
   background-color: #000080;
   border: none;
 }
-
-/*__________ ADMIN HOME STYLE __________*/
