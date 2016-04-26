@@ -13,6 +13,7 @@
       <div class = "input">
         <textarea id="inputText" name="content" rows="5" cols="50"><?php echo $news_post->content; ?></textarea>
       </div>
+      <input type="hidden" name="date" value="<?php echo date("Y-m-d H:i:s")?>"/>
       <div class="actions">
         <input type="submit" class="submit-btn" value="Envoyer"/>
       </div>
