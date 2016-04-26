@@ -2,8 +2,9 @@
   <div>
     <h1>Editer un article</h1>
   </div>
-  <form action="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/index' ?>" method="post">
+  <form action="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/edit/'.$news_post->id ?>" method="post">
     <div class="input-wrapper">
+      <input type="hidden" name="id" value="<?php echo $news_post->id; ?>"/>
       <label for="inputTitle">Titre</label>
       <div class = "input">
         <input type="text" id="inputTitle" name="title" value="<?php echo $news_post->title; ?>"/>
