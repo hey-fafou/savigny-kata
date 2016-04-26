@@ -1,6 +1,6 @@
 <div class="body-wrapper">
   <div>
-    <h1><?php echo $total_posts; ?> Articles</h1>
+    <h1><?php echo $total_posts; ?> Article(s)</h1>
   </div>
   
   <table>
