@@ -17,6 +17,9 @@ class Controller {
    */
   function __construct($request) {
     $this->_request = $request;
+    if ($this->_request->prefix == 'admin') {
+      $this->_layout = 'admin';
+    }
   }
 
   /**
