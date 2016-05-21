@@ -26,6 +26,7 @@
             </button>
             <ul>
               <li><a href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home'?>" class="nav-link">Les news</a></li>
+              <li><a href="<?php echo BASE_URL.'/home'?>" class="nav-link">Le site</a></li>
             </ul>
           </nav>
           <!--  [MENU]  --> 
@@ -34,7 +35,7 @@
       <!-- [HEADER] -->
 
       <!-- [ASIDE]  -->
-      <div class="aside">
+      <aside>
         <div class="address">
           <h3>Adresse</h3>
           Gymnase Les Régalles<br/>
@@ -54,7 +55,7 @@
             <img src="<?php echo BASE_URL.'/webroot/img/logo/asps.jpg'?>" alt="" title="Lien vers le site de l'ASPS"/>
           </a>
         </div>
-      </div>
+      </aside>
       <!-- [ASIDE]  -->
 
       <?php echo $this->Session->flash(); ?>

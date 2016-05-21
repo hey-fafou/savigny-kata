@@ -18,10 +18,12 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 20px;
+  text-transform: uppercase;
 }
 
 h2 {
   font-size: 16px;
+  text-transform: uppercase;
 }
 
 input,
@@ -100,6 +102,10 @@ ul {
    background-color: #4CAF50;
    color: white;
  }*/
+
+.description {
+  margin-bottom: 4em;
+}
 
  /*__________ HEADER STYLE _________*/
 .header-wrapper {
@@ -302,7 +308,7 @@ ul {
 }
 
 /*__________ ASIDE STYLE __________*/
-.aside {
+aside {
   font-family: "PT Serif",serif;
   width: 83.33333%;
   margin-left: 8.33333%;
@@ -312,24 +318,24 @@ ul {
   display: none;
 }
 
-.aside div {
+aside div {
   margin-bottom: 3em;
 }
 
-.aside h3 {
-  text-transform: none;
+aside h3 {
+  text-transform: uppercase;
   font-size: 16px;
 }
 
-.aside a {
+aside a {
   color: #000080;
 }
 
-.aside .external-links li {
+aside .external-links li {
   list-style-type: square;
 }
 
-.aside .asps-logo {
+aside .asps-logo {
   margin-top: 2em;
   opacity: 0.5;
   filter: alpha(opacity=50); /* For IE8 and earlier */
@@ -357,12 +363,8 @@ ul {
   display: block;
 }
 
-.body-wrapper h1, .body-wrapper h2 {
-  text-transform: none;
-}
-
 @media only screen and (min-width: 61.250em) {
-  .aside {
+  aside {
     display: inline;
     float: left;
     width: 19.66667%;
@@ -393,7 +395,7 @@ ul {
 
 /*__________ HOME STYLE __________*/
 .home-news-post {
-  margin-bottom: 1.5em;
+  margin-bottom: 3em;
 }
 
 .date {
