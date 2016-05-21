@@ -39,7 +39,7 @@
       <!-- [HEADER] -->
 
       <!-- [ASIDE]  -->
-      <div class="aside">
+      <aside>
         <div class="address">
           <h3>Adresse</h3>
           Gymnase Les Régalles<br/>
@@ -59,7 +59,7 @@
             <img src="<?php echo BASE_URL.'/webroot/img/logo/asps.jpg'?>" alt="" title="Lien vers le site de l'ASPS"/>
           </a>
         </div>
-      </div>
+      </aside>
       <!-- [ASIDE]  -->
 
       <?php echo $this->Session->flash(); ?>
