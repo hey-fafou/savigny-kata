@@ -152,6 +152,7 @@ class Model {
   public function delete($id) {
     $sql = "DELETE FROM $this->_table WHERE $this->_primaryKey = $id";
     $this->_db->query($sql);
+    return true;
   }
 
   public function save($data) {

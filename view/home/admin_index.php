@@ -6,7 +6,7 @@
   <table>
     <thead>
       <tr>
-        <th>ID</th>
+        <th>Date</th>
         <th>Titre</th>
         <th>Action</th>
       </tr>
@@ -23,7 +23,7 @@
         </tr>
       <?php foreach($news_posts as $k => $v) { ?>
         <tr>
-          <td><?php echo $v->id;?></td>
+          <td><?php echo $v->date_fr;?></td>
           <td><?php echo $v->title;?></td>
           <td>
             <a href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/edit/'.$v->id; ?>">

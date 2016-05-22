@@ -44,7 +44,7 @@ class HomeController extends Controller {
     $news_per_page = 10;
     $this->loadModel('PostsModel');
     $filters = array('type' => 'news');
-    $fields = array('id, title');
+    $fields = array('id, title', 'DATE_FORMAT(date, \'%d/%m/%Y à %Hh%i\') AS date_fr');
     $sort = 'STR_TO_DATE(date, \'%Y-%m-%d %H:%i:%s\') DESC';
     $var['news_posts'] = $this->PostsModel->find(array(
       'filters' => $filters,
@@ -64,11 +64,11 @@ class HomeController extends Controller {
     $this->redirect(BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/index');
   }
 
-  function admin_edit($id) {
+  function admin_edit($id = 0) {
     $this->loadModel('PostsModel');
     if (!empty($_POST)) {
       $this->PostsModel->save($_POST);
-      $this->redirect(BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/index');
+      $this->Session->setFlash('Le contenu a bien été modifié.');
     }
     $filters = array('type' => 'news',
       'id' => $id);
@@ -76,7 +76,11 @@ class HomeController extends Controller {
     $var['news_post'] = $this->PostsModel->findFirst(array(
       'filters' => $filters,
       'fields' => $fields));
-    $this->set($var);
+    if (empty($var['news_post'])) {
+      $this->redirect(BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/index');
+    } else {
+      $this->set($var);
+    }
   }
 
   function admin_add() {
