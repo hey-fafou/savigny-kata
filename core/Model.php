@@ -48,7 +48,7 @@ class Model {
       Model::$connections[$this->_dbName] = $pdo;
       $this->_db = $pdo; 
     } catch(PDOException $e) {
-      if (Config::debug >= 1) {
+      if (Config::$debug >= 1) {
         die($e->getMessage());
       } else {
         die('Unable to connect database.');
