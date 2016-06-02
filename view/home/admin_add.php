@@ -10,7 +10,7 @@
       </div>
       <label for="inputText">Contenu</label>
       <div class = "input">
-        <textarea id="inputText" name="content" rows="5" cols="50"></textarea>
+        <textarea id="inputText" class="wysiwyg" name="content" rows="5" cols="50"></textarea>
       </div>
       <input type="hidden" name="type" value="news"/>
       <input type="hidden" name="date" value="<?php echo date("Y-m-d H:i:s")?>"/>
