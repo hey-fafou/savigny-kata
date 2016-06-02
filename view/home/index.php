@@ -9,7 +9,7 @@
           <span class="date"><?php echo $v->date_fr;?></span>
         </h2>
         <p class="post-content"><?php echo $v->content; ?></p>
-        <p class="read-more"><a href="<?php echo BASE_URL.'/home/view/'.$v->id;?>">Lire la suite &rarr;</a></p>
+        <p class="read-more"><a href="<?php echo BASE_URL.'/home/view/'.$v->id; ?>" class="blue-link">Lire la suite &rarr;</a></p>
       </div> 
     <?php } ?>
     <?php pagination($page, $pages, "home") ?>

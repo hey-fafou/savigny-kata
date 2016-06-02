@@ -16,7 +16,7 @@
           <td></td>
           <td></td>
           <td>
-            <a href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/add/' ?>">
+            <a href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/add/' ?>" class="blue-link">
               Ajouter
             </a>
           </td>
@@ -26,11 +26,11 @@
           <td><?php echo $v->date_fr;?></td>
           <td><?php echo $v->title;?></td>
           <td>
-            <a href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/edit/'.$v->id; ?>">
+            <a href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/edit/'.$v->id; ?>" class="blue-link">
               Editer
             </a>
             <a onclick="return confirm('Voulez-vous vraiment supprimer ce contenu ?')"
-               href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/delete/'.$v->id; ?>">
+               href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/delete/'.$v->id; ?>" class="blue-link">
               Supprimer
             </a>
           </td>

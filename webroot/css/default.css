@@ -103,6 +103,11 @@ ul {
    color: white;
  }*/
 
+.blue-link {
+  color: #00A8DF;
+  font-weight: bold;
+}
+
 .description {
   margin-bottom: 4em;
 }
@@ -327,11 +332,6 @@ aside h3 {
   font-size: 16px;
 }
 
-aside a {
-  color: #00A8DF;
-  font-weight: bold;
-}
-
 aside .external-links li {
   list-style-type: square;
 }
@@ -444,8 +444,6 @@ aside .asps-logo {
 
 table a {
   margin-right: 15px;
-  color: #00A8DF;
-  font-weight: bold;
 }
 
 .input-wrapper:before,

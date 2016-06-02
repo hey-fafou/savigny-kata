@@ -52,9 +52,9 @@
         <div class="external-links">
           <h3>Liens externes</h3>
             <ul>
-              <li><a href = "http://www.ffkama.fr/">La FFKAMA</a></li>
-              <li><a href = "http://www.ffkarate.fr/seineetmarne/">La ligue 77</a></li>
-              <li><a href = "http://http://www.aspsavigny.fr/">L'ASPS</a></li>
+              <li><a href = "http://www.ffkama.fr/" class="blue-link">La FFKAMA</a></li>
+              <li><a href = "http://www.ffkarate.fr/seineetmarne/" class="blue-link">La ligue 77</a></li>
+              <li><a href = "http://http://www.aspsavigny.fr/" class="blue-link">L'ASPS</a></li>
             </ul>
         </div>
         <div class="asps-logo">
