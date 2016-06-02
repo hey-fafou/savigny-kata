@@ -328,7 +328,8 @@ aside h3 {
 }
 
 aside a {
-  color: #000080;
+  color: #00A8DF;
+  font-weight: bold;
 }
 
 aside .external-links li {
@@ -443,7 +444,8 @@ aside .asps-logo {
 
 table a {
   margin-right: 15px;
-  color: 	#4682B4;
+  color: #00A8DF;
+  font-weight: bold;
 }
 
 .input-wrapper:before,
