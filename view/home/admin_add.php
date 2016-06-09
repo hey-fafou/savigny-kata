@@ -2,7 +2,7 @@
   <div>
     <h1>Ajouter un article</h1>
   </div>
-  <form action="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/add/' ?>" method="post">
+  <form action="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/add/' ?>" method="post" enctype="multipart/form-data">
     <div class="input-wrapper">
       <label for="inputTitle">Titre</label>
       <div class = "input">
@@ -14,6 +14,11 @@
       </div>
       <input type="hidden" name="type" value="news"/>
       <input type="hidden" name="date" value="<?php echo date("Y-m-d H:i:s")?>"/>
+      <label for"inputImage">Illustration</label>
+      <div class ="input">
+        <input type="hidden" name="MAX_FILE_SIZE" value="4194304" />
+        <input id="inputImage" type="file" name="img">
+      </div>
       <div class="actions">
         <input type="submit" class="submit-btn" value="Envoyer"/>
       </div>

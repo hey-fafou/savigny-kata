@@ -26,8 +26,7 @@ class HomeController extends Controller {
 
   function view($id = 0) {
     $this->loadModel('PostsModel');
-    $filters = array('type' => 'news',
-                     'id' => $id);
+    $filters = array('type' => 'news', 'id' => $id);
     $fields = array('*', 'DATE_FORMAT(date, \'%d/%m/%Y à %Hh%i\') AS date_fr');
     $var['news_post'] = $this->PostsModel->findFirst(array(
       'filters' => $filters,
@@ -58,24 +57,56 @@ class HomeController extends Controller {
   }
 
   function admin_delete($id) {
+    // Deleting post content
     $this->loadModel('PostsModel');
     $this->PostsModel->delete($id);
-    $this->Session->setFlash('Le contenu a bien été supprimé.');
+    
+    // Checking if media is associated with the post
+    $this->loadModel('MediasModel');
+    $filters = array('type' => 'news', 'post_id' => $id);
+    $var['media'] = $this->MediasModel->findFirst(array('filters' => $filters));
+
+    // If there is a media associated, we delete the media
+    if (!empty($var['media'])) {
+      $this->MediasModel->delete($var['media']->id);
+      $this->Session->setFlash('Le contenu et l\'image associée ont bien été supprimés.');
+    } else {
+      $this->Session->setFlash('Le contenu a bien été supprimé.');
+    }
+
     $this->redirect(BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/index');
   }
 
   function admin_edit($id = 0) {
     $this->loadModel('PostsModel');
+
+    // If method post has been called
     if (!empty($_POST)) {
+      // When adding a post, a media can be added. Therefore we had to
+      // define MAX_FILE_SIZE input, and we now have to remove it from $_POST
+      array_pop($_POST);  
+
+      // Saving post update
       $this->PostsModel->save($_POST);
       $this->Session->setFlash('Le contenu a bien été modifié.');
     }
-    $filters = array('type' => 'news',
-      'id' => $id);
+
+    // Filter on news post with id $id
+    $filters = array('type' => 'news', 'id' => $id);
+
+    // Get all field and formated date
     $fields = array('*', 'DATE_FORMAT(date, \'%d/%m/%Y à %Hh%i\') AS date_fr');
+
+    // Get post to edit and print them in the appropriate form field when editiing
     $var['news_post'] = $this->PostsModel->findFirst(array(
       'filters' => $filters,
       'fields' => $fields));
+
+    // There is two manner to get in this function :
+    // 1) When a post is selected for edition
+    // 2) When update is submitted
+    // In the first case we only need to set fields of the post to edit.
+    // In the second case after edition is complete, we redirect to main edit page.
     if (empty($var['news_post'])) {
       $this->redirect(BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/index');
     } else {
@@ -85,8 +116,32 @@ class HomeController extends Controller {
 
   function admin_add() {
     $this->loadModel('PostsModel');
+
+    // If method post has been called
     if (!empty($_POST)) {
-      $this->PostsModel->save($_POST);
+      // When adding a post, a media can be added. Therefore we had to
+      // define MAX_FILE_SIZE input, and we now have to remove it from $_POST
+      array_pop($_POST);  
+
+      // Need to save the last post id to join media
+      $last_post_id = $this->PostsModel->save($_POST);
+
+      // If a media has been given
+      if (!empty($_FILES)) {
+        if ($_FILES['img']['error'] == 0) {
+          // Building data to insert in medias table
+          $data = array('post_id' => $last_post_id,
+            'title' => $_FILES['img']['name'],
+            'file' => $_FILES['img']['tmp_name'],
+            'type' => $_POST['type']);
+
+          // Load model media to call its methods
+          $this->loadModel('MediasModel');
+          $this->MediasModel->upload($data);
+        }
+      }
+
+      // After adding the post, we redirect to admin home page
       $this->redirect(BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/index');
     }
   }

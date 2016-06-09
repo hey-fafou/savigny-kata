@@ -175,6 +175,6 @@ class Model {
 
     $rq = $this->_db->prepare($sql);
     $rq->execute($d);
-    return true;
+    return $this->_db->lastInsertId();
   }
 }
