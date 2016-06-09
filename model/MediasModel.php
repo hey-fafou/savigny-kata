@@ -1,6 +1,11 @@
 <?php
 class MediasModel extends Model {
 
+  /**
+   * upload method.
+   * @brief handles the upload of a media.
+   * @param [in] $data data to add into database.
+   */
   public function upload($data) {
     // Save destination dir
     $dest_dir = $_SERVER['DOCUMENT_ROOT'].BASE_URL.'/webroot/img/'.$data['type'];
@@ -29,6 +34,11 @@ class MediasModel extends Model {
     }
   }
 
+  /*
+   * delete method.
+   * @brief deletes file + media entry in database.
+   * @param [in] $entry entry to delete.
+   */
   public function delete($entry) {
     unlink($entry->file.'/'.$entry->title);
     parent::delete($entry->id);
