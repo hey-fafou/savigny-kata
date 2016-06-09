@@ -80,6 +80,14 @@ class HomeController extends Controller {
   function admin_edit($id = 0) {
     $this->loadModel('PostsModel');
 
+    // Filter on news post with id $id and field with formated date
+    $filters = array('type' => 'news', 'id' => $id);
+    $fields = array('*', 'DATE_FORMAT(date, \'%d/%m/%Y à %Hh%i\') AS date_fr');
+    // Get post to edit and print them in the appropriate form field when editiing
+    $var['news_post'] = $this->PostsModel->findFirst(array(
+      'filters' => $filters,
+      'fields' => $fields));
+
     // If method post has been called
     if (!empty($_POST)) {
       // When adding a post, a media can be added. Therefore we had to
@@ -90,17 +98,6 @@ class HomeController extends Controller {
       $this->PostsModel->save($_POST);
       $this->Session->setFlash('Le contenu a bien été modifié.');
     }
-
-    // Filter on news post with id $id
-    $filters = array('type' => 'news', 'id' => $id);
-
-    // Get all field and formated date
-    $fields = array('*', 'DATE_FORMAT(date, \'%d/%m/%Y à %Hh%i\') AS date_fr');
-
-    // Get post to edit and print them in the appropriate form field when editiing
-    $var['news_post'] = $this->PostsModel->findFirst(array(
-      'filters' => $filters,
-      'fields' => $fields));
 
     // There is two manner to get in this function :
     // 1) When a post is selected for edition
