@@ -68,7 +68,7 @@ class HomeController extends Controller {
 
     // If there is a media associated, we delete the media
     if (!empty($var['media'])) {
-      $this->MediasModel->delete($var['media']->id);
+      $this->MediasModel->delete($var['media']);
       $this->Session->setFlash('Le contenu et l\'image associée ont bien été supprimés.');
     } else {
       $this->Session->setFlash('Le contenu a bien été supprimé.');

@@ -28,4 +28,9 @@ class MediasModel extends Model {
       die('Echec lors du déplacement de '.$data['file'].' vers '.$dest_dir.'/'.$file_name);
     }
   }
+
+  public function delete($entry) {
+    unlink($entry->file.'/'.$entry->title);
+    parent::delete($entry->id);
+  }
 }
