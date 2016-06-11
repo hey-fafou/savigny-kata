@@ -78,15 +78,33 @@ class HomeController extends Controller {
   }
 
   function admin_edit($id = 0) {
-    $this->loadModel('PostsModel');
+    // If a media has been given
+    if (!empty($_FILES)) {
+      if ($_FILES['img']['error'] == 0) {
+        // Building data to insert in medias table
+        $data = array('post_id' => $id,
+          'title' => $_FILES['img']['name'],
+          'file' => $_FILES['img']['tmp_name'],
+          'type' => 'news');
 
-    // Filter on news post with id $id and field with formated date
-    $filters = array('type' => 'news', 'id' => $id);
-    $fields = array('*', 'DATE_FORMAT(date, \'%d/%m/%Y à %Hh%i\') AS date_fr');
-    // Get post to edit and print them in the appropriate form field when editiing
-    $var['news_post'] = $this->PostsModel->findFirst(array(
-      'filters' => $filters,
-      'fields' => $fields));
+        // Load model media to call its methods
+        $this->loadModel('MediasModel');
+
+        // Before updating the new image, need to remove the previous one if there
+        // was one.
+        $filters = array('type' => 'news', 'post_id' => $id);
+        $var['media'] = $this->MediasModel->findFirst(array('filters' => $filters));
+
+        // If there is a media associated, we delete the media
+        if (!empty($var['media'])) {
+          $this->MediasModel->delete($var['media']);
+        }
+
+        $this->MediasModel->upload($data);
+      }
+    }
+
+    $this->loadModel('PostsModel');
 
     // If method post has been called
     if (!empty($_POST)) {
@@ -99,11 +117,18 @@ class HomeController extends Controller {
       $this->Session->setFlash('Le contenu a bien été modifié.');
     }
 
+    // Filter on news post with id $id and field with formated date
+    $filters = array('type' => 'news', 'id' => $id);
+    $fields = array('*', 'DATE_FORMAT(date, \'%d/%m/%Y à %Hh%i\') AS date_fr');
+    // Get post to edit and print them in the appropriate form field when editiing
+    $var['news_post'] = $this->PostsModel->findFirst(array(
+      'filters' => $filters,
+      'fields' => $fields));
+
     // There is two manner to get in this function :
     // 1) When a post is selected for edition
     // 2) When update is submitted
-    // In the first case we only need to set fields of the post to edit.
-    // In the second case after edition is complete, we redirect to main edit page.
+    // If $id of the post to edit exist, will pre-fill the form, else we redirect.
     if (empty($var['news_post'])) {
       $this->redirect(BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/index');
     } else {
