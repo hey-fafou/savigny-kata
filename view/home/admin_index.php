@@ -23,7 +23,7 @@
         </tr>
       <?php foreach($news_posts as $k => $v) { ?>
         <tr>
-          <td><?php echo $v->date_fr;?></td>
+          <td><?php echo date('d/m/Y à H\hi', strtotime($v->date));?></td>
           <td><?php echo $v->title;?></td>
           <td>
             <a href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/edit/'.$v->id; ?>" class="blue-link">

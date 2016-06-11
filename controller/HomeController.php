@@ -12,8 +12,8 @@ class HomeController extends Controller {
     $news_per_page = 2;
     $this->loadModel('PostsModel');
     $filters = array('type' => 'news');
-    $fields = array('*', 'DATE_FORMAT(date, \'%d/%m/%Y à %Hh%i\') AS date_fr');
-    $sort = 'STR_TO_DATE(date, \'%Y-%m-%d %H:%i:%s\') DESC';
+    $fields = array('id, title, content, date');
+    $sort = 'date DESC';
     $var['news_posts'] = $this->PostsModel->find(array(
       'filters' => $filters,
       'fields' => $fields,
@@ -27,7 +27,7 @@ class HomeController extends Controller {
   function view($id = 0) {
     $this->loadModel('PostsModel');
     $filters = array('type' => 'news', 'id' => $id);
-    $fields = array('*', 'DATE_FORMAT(date, \'%d/%m/%Y à %Hh%i\') AS date_fr');
+    $fields = array('id', 'title', 'content', 'date');
     $var['news_post'] = $this->PostsModel->findFirst(array(
       'filters' => $filters,
       'fields' => $fields));
@@ -43,8 +43,8 @@ class HomeController extends Controller {
     $news_per_page = 10;
     $this->loadModel('PostsModel');
     $filters = array('type' => 'news');
-    $fields = array('id, title', 'DATE_FORMAT(date, \'%d/%m/%Y à %Hh%i\') AS date_fr');
-    $sort = 'STR_TO_DATE(date, \'%Y-%m-%d %H:%i:%s\') DESC';
+    $fields = array('id, title', 'date');
+    $sort = 'date DESC';
     $var['news_posts'] = $this->PostsModel->find(array(
       'filters' => $filters,
       'fields' => $fields,
