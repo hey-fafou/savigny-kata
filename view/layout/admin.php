@@ -32,8 +32,8 @@
               menu
             </button>
             <ul>
-              <li><a href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home'?>" class="nav-link">Les news</a></li>
-              <li><a href="<?php echo BASE_URL.'/home'?>" class="nav-link">Le site</a></li>
+              <li><a href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/posts'?>" class="nav-link">Les news</a></li>
+              <li><a href="<?php echo BASE_URL.'/posts'?>" class="nav-link">Le site</a></li>
             </ul>
           </nav>
           <!--  [MENU]  --> 

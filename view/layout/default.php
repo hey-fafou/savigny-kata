@@ -25,7 +25,7 @@
               menu
             </button>
             <ul>
-              <li><a href="<?php echo BASE_URL.'/savigny-kata/home'?>" class="nav-link">Les news</a></li>
+              <li><a href="<?php echo BASE_URL.'/savigny-kata/posts'?>" class="nav-link">Les news</a></li>
               <li><a href="#" class="nav-link">Les photos</a></li>
               <li><a href="#" class="nav-link">Les vidéos</a></li>
               <li><a href="#" class="nav-link">Le blog</a></li>

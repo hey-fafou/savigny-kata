@@ -16,21 +16,21 @@
           <td></td>
           <td></td>
           <td>
-            <a href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/add/' ?>" class="blue-link">
+            <a href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/posts/add/'.$post_type ?>" class="blue-link">
               Ajouter
             </a>
           </td>
         </tr>
-      <?php foreach($news_posts as $k => $v) { ?>
+      <?php foreach($posts as $k => $v) { ?>
         <tr>
           <td><?php echo date('d/m/Y à H\hi', strtotime($v->date));?></td>
           <td><?php echo $v->title;?></td>
           <td>
-            <a href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/edit/'.$v->id; ?>" class="blue-link">
+            <a href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/posts/edit/'.$v->type.'/'.$v->id; ?>" class="blue-link">
               Editer
             </a>
             <a onclick="return confirm('Voulez-vous vraiment supprimer ce contenu ?')"
-               href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/delete/'.$v->id; ?>" class="blue-link">
+               href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/posts/delete/'.$v->type.'/'.$v->id; ?>" class="blue-link">
               Supprimer
             </a>
           </td>

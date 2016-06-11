@@ -2,18 +2,18 @@
   <div>
     <h1>Editer un article</h1>
   </div>
-  <form action="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/edit/'.$news_post->id ?>" method="post" enctype="multipart/form-data">
+  <form action="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/posts/edit/'.$post->type.'/'.$post->id ?>" method="post" enctype="multipart/form-data">
     <div class="input-wrapper">
-      <input type="hidden" name="id" value="<?php echo $news_post->id; ?>"/>
+      <input type="hidden" name="id" value="<?php echo $post->id; ?>"/>
       <label for="inputTitle">Titre</label>
       <div class = "input">
-        <input type="text" id="inputTitle" name="title" value="<?php echo $news_post->title; ?>"/>
+        <input type="text" id="inputTitle" name="title" value="<?php echo $post->title; ?>"/>
       </div>
       <label for="inputText">Contenu</label>
       <div class = "input">
-        <textarea id="inputText" class="wysiwyg" name="content" rows="5" cols="50"><?php echo $news_post->content; ?></textarea>
+        <textarea id="inputText" class="wysiwyg" name="content" rows="5" cols="50"><?php echo $post->content; ?></textarea>
       </div>
-      <input type="hidden" name="type" value="news"/>
+      <input type="hidden" name="type" value="<?php echo $post->type; ?>"/>
       <input type="hidden" name="date" value="<?php echo date("Y-m-d H:i:s")?>"/>
       <label for"inputImage">Illustration</label>
       <div class ="input">

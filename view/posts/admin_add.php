@@ -2,7 +2,7 @@
   <div>
     <h1>Ajouter un article</h1>
   </div>
-  <form action="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/home/add/' ?>" method="post" enctype="multipart/form-data">
+  <form action="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/posts/add/'.$post_type ?>" method="post" enctype="multipart/form-data">
     <div class="input-wrapper">
       <label for="inputTitle">Titre</label>
       <div class = "input">
@@ -12,7 +12,7 @@
       <div class = "input">
         <textarea id="inputText" class="wysiwyg" name="content" rows="5" cols="50"></textarea>
       </div>
-      <input type="hidden" name="type" value="news"/>
+      <input type="hidden" name="type" value="<?php echo $post_type ?>"/>
       <input type="hidden" name="date" value="<?php echo date("Y-m-d H:i:s")?>"/>
       <label for"inputImage">Illustration</label>
       <div class ="input">

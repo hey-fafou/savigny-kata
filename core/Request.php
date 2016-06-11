@@ -23,9 +23,9 @@ class Request {
       }
     }
 
-    $controller = "home";
+    $controller = "posts";
     $action = "index";
-    $params = "";
+    $params = "news";
 
     // Controller is specified
     if (isset(Router::$routes['controller'])) {
