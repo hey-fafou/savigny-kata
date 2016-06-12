@@ -138,7 +138,6 @@ class Model {
       }
     }
 
-    debug($sql);
     $rq = $this->_db->prepare($sql);
     $rq->execute();
     return $rq->fetchAll(PDO::FETCH_OBJ);

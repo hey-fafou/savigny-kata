@@ -48,3 +48,38 @@ function pagination($currentPage, $totalPages, $view) {
           </div>";
   }
 }
+
+/**
+ * thumbnail function.
+ * @brief Make thumbnail from picture.
+ * @param [in] $filename file path of the picture.
+ * @param [in] $percent percentage of reduction.
+ */
+function thumbnail($filename, $percent = 0.5) {
+  // Only reduction
+  if ($percent > 1) {
+    $percent = 1;
+  }
+
+  // Compute new dimension
+  list($width, $height) = getimagesize($_SERVER['DOCUMENT_ROOT'].$filename);
+  $new_width = $width * $percent;
+  $new_height = $height * $percent;
+
+  // Loading
+  $thumb = imagecreatetruecolor($new_width, $new_height);
+  $source = imagecreatefromjpeg($_SERVER['DOCUMENT_ROOT'].$filename);
+
+  // Resizing image
+  if (!imagecopyresampled($thumb, $source, 0, 0, 0, 0, $new_width, $new_height, $width, $height)) {
+    die('imagecopyresampled failed.');
+  }
+
+  // Destroy previous image
+  imagedestroy($source);
+
+  // Save
+  if (!imagejpeg($thumb, $_SERVER['DOCUMENT_ROOT'].$filename, 100)) {
+    die('imagejpeg failed.');
+  }
+}

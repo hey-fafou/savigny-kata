@@ -27,6 +27,8 @@ class MediasModel extends Model {
       $data['title'] = $file_name;
       $data['file'] = BASE_URL.'/webroot/img/'.$data['type'];
 
+      thumbnail($data['file'].'/'.$data['title'], 0.1);
+
       // Save file une database
       parent::save($data);
     } else {
@@ -40,7 +42,7 @@ class MediasModel extends Model {
    * @param [in] $entry entry to delete.
    */
   public function delete($entry) {
-    unlink($entry->file.'/'.$entry->title);
+    unlink($_SERVER['DOCUMENT_ROOT'].$entry->file.'/'.$entry->title);
     parent::delete($entry->id);
   }
 }
