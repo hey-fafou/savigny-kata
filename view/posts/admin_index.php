@@ -23,14 +23,14 @@
         </tr>
       <?php foreach($posts as $k => $v) { ?>
         <tr>
-          <td><?php echo date('d/m/Y à H\hi', strtotime($v->date));?></td>
-          <td><?php echo $v->title;?></td>
+          <td><?php echo date('d/m/Y à H\hi', strtotime($v->post_date));?></td>
+          <td><?php echo $v->post_title;?></td>
           <td>
-            <a href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/posts/edit/'.$v->type.'/'.$v->id; ?>" class="blue-link">
+            <a href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/posts/edit/'.$v->post_type.'/'.$v->post_id; ?>" class="blue-link">
               Editer
             </a>
             <a onclick="return confirm('Voulez-vous vraiment supprimer ce contenu ?')"
-               href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/posts/delete/'.$v->type.'/'.$v->id; ?>" class="blue-link">
+               href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/posts/delete/'.$v->post_type.'/'.$v->post_id; ?>" class="blue-link">
               Supprimer
             </a>
           </td>

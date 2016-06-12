@@ -65,9 +65,14 @@ class Model {
 
     // Select field by field
     if (isset($param['fields'])) {
-      // If several field are given
       if (is_array($param['fields'])) {
-        $sql .= implode(', ', $param['fields']);
+        $fields = array();
+        foreach ($param['fields'] as $k => $v) {
+          foreach ($v as $field) {
+            $fields[] = $k.'.'.$field.' AS '.substr($k, 0, -1).'_'.$field;
+          }
+        }
+        $sql .= implode(', ', $fields);
       } else {
         // If only one field is given
         $sql .= $param['fields'];
@@ -80,6 +85,13 @@ class Model {
     // Select from the table
     $sql .= ' FROM '.$this->_table.' ';
 
+    // Join table if set.
+    if (isset($param['joins'])) {
+      foreach ($param['joins'] as $k => $v) {
+        $sql .= 'INNER JOIN '.$k.' ON '.$k.'.'.$v.' = '.$this->_table.'.'.$this->_primaryKey.' ';
+      }
+    }
+
     // Construction of filters
     if (isset($param['filters'])) {
       $sql .= 'WHERE ';
@@ -90,13 +102,15 @@ class Model {
       } else {
         $cond = array();
         // Foreach filter of type key => value
-        foreach($param['filters'] as $k=>$v) {
-          // Need to put "" if value is not numeric
-          if (!is_numeric($v)) {
-            $v = '"'.mysql_escape_string($v).'"';
+        foreach ($param['filters'] as $table => $filters) {
+          foreach ($filters as $k => $v) {
+            // Need to put "" if value is not numeric
+            if (!is_numeric($v)) {
+              $v = '"'.mysql_escape_string($v).'"';
+            }
+            // Adding each conditions
+            $cond[] = "$table.$k=$v";
           }
-          // Adding each conditions
-          $cond[] = "$k=$v";
         }
         // separating conditions in request with AND
         $sql .= implode(' AND ', $cond);
@@ -124,6 +138,7 @@ class Model {
       }
     }
 
+    debug($sql);
     $rq = $this->_db->prepare($sql);
     $rq->execute();
     return $rq->fetchAll(PDO::FETCH_OBJ);

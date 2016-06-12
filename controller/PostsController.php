@@ -19,12 +19,15 @@ class PostsController extends Controller {
 
     $posts_per_page = 2;
     $this->loadModel('PostsModel');
-    $filters = array('type' => $post_type);
-    $fields = array('id', 'title', 'content', 'type', 'date');
+    $filters = array('posts' => array('type' => $post_type));
+    $fields = array('posts' => array('id', 'title', 'content', 'type', 'date'),
+                    'medias' => array('title', 'file'));
+    $joins = array('medias' => 'post_id');
     $sort = 'date DESC';
     $var['posts'] = $this->PostsModel->find(array(
       'filters' => $filters,
       'fields' => $fields,
+      'joins' => $joins,
       'sort' => $sort,
       'limit' => array($posts_per_page*($this->_request->page - 1), $posts_per_page)));
     $var['pages'] = ceil(($this->PostsModel->findCount($filters))/$posts_per_page);
@@ -49,11 +52,15 @@ class PostsController extends Controller {
     }
 
     $this->loadModel('PostsModel');
-    $filters = array('type' => $post_type, 'id' => $post_id);
-    $fields = array('id', 'title', 'content', 'date');
+    $filters = array('posts' => array('type' => $post_type, 
+                                      'id' => $post_id));
+    $fields = array('posts' => array('id', 'title', 'content', 'date'),
+                    'medias' => array('title', 'file'));
+    $joins = array('medias' => 'post_id');
     $var['post'] = $this->PostsModel->findFirst(array(
       'filters' => $filters,
-      'fields' => $fields));
+      'fields' => $fields,
+      'joins' => $joins));
     if (empty($var['post'])) {
       $this->e404("Page introuvable.");
     }
@@ -74,8 +81,8 @@ class PostsController extends Controller {
 
     $posts_per_page = 10;
     $this->loadModel('PostsModel');
-    $filters = array('type' => $post_type);
-    $fields = array('id', 'title', 'type', 'date');
+    $filters = array('posts' => array('type' => $post_type));
+    $fields = array('posts' => array('id', 'title', 'type', 'date'));
     $sort = 'date DESC';
     $var['posts'] = $this->PostsModel->find(array(
       'filters' => $filters,
@@ -111,7 +118,8 @@ class PostsController extends Controller {
     
     // Checking if media is associated with the post
     $this->loadModel('MediasModel');
-    $filters = array('type' => $post_type, 'post_id' => $post_id);
+    $filters = array('medias' => array('type' => $post_type, 
+                                      'post_id' => $post_id));
     $var['media'] = $this->MediasModel->findFirst(array('filters' => $filters));
 
     // If there is a media associated, we delete the media
@@ -155,7 +163,8 @@ class PostsController extends Controller {
 
         // Before updating the new image, need to remove the previous one if there
         // was one.
-        $filters = array('type' => $post_type, 'post_id' => $post_id);
+        $filters = array('medias' => array('type' => $post_type, 
+                                           'post_id' => $post_id));
         $var['media'] = $this->MediasModel->findFirst(array('filters' => $filters));
 
         // If there is a media associated, we delete the media
@@ -181,8 +190,9 @@ class PostsController extends Controller {
     }
 
     // Filter on post with id $post_id and field with formated date
-    $filters = array('type' => $post_type, 'id' => $post_id);
-    $fields = array('id', 'title', 'content', 'type');
+    $filters = array('posts' => array('type' => $post_type, 
+                                      'id' => $post_id));
+    $fields = array('posts' => array('id', 'title', 'content', 'type'));
     // Get post to edit and print them in the appropriate form field when editiing
     $var['post'] = $this->PostsModel->findFirst(array(
       'filters' => $filters,

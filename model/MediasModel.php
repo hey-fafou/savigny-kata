@@ -25,7 +25,7 @@ class MediasModel extends Model {
     if (move_uploaded_file($data['file'], $dest_dir.'/'.$file_name)) {
       // Update 'title' and 'file'
       $data['title'] = $file_name;
-      $data['file'] = $dest_dir;
+      $data['file'] = BASE_URL.'/webroot/img/'.$data['type'];
 
       // Save file une database
       parent::save($data);
