@@ -27,7 +27,7 @@ class MediasModel extends Model {
       $data['title'] = $file_name;
       $data['file'] = BASE_URL.'/webroot/img/'.$data['type'];
 
-      thumbnail($data['file'].'/'.$data['title'], 0.1);
+      thumbnail($data['file'].'/'.$data['title']);
 
       // Save file une database
       parent::save($data);

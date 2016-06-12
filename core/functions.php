@@ -53,25 +53,27 @@ function pagination($currentPage, $totalPages, $view) {
  * thumbnail function.
  * @brief Make thumbnail from picture.
  * @param [in] $filename file path of the picture.
- * @param [in] $percent percentage of reduction.
+ * @param [in] $max_width max width (px) of the picture.
+ * @param [in] $max_height max height (px) of the picture.
  */
-function thumbnail($filename, $percent = 0.5) {
-  // Only reduction
-  if ($percent > 1) {
-    $percent = 1;
-  }
-
+function thumbnail($filename, $max_width = 240, $max_height = 180) {
   // Compute new dimension
   list($width, $height) = getimagesize($_SERVER['DOCUMENT_ROOT'].$filename);
-  $new_width = $width * $percent;
-  $new_height = $height * $percent;
+  $ratio = $width/$height;
+
+  // If width > height
+  if ($ratio > 1) {
+    $max_height = ($height*$max_width)/$width;
+  } else {
+    $max_width = ($width*$max_height)/$height;
+  }
 
   // Loading
-  $thumb = imagecreatetruecolor($new_width, $new_height);
+  $thumb = imagecreatetruecolor($max_width, $max_height);
   $source = imagecreatefromjpeg($_SERVER['DOCUMENT_ROOT'].$filename);
 
   // Resizing image
-  if (!imagecopyresampled($thumb, $source, 0, 0, 0, 0, $new_width, $new_height, $width, $height)) {
+  if (!imagecopyresampled($thumb, $source, 0, 0, 0, 0, $max_width, $max_height, $width, $height)) {
     die('imagecopyresampled failed.');
   }
 
