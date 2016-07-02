@@ -152,7 +152,7 @@ ul {
   display: block;
 }
 
-@media only screen and (min-width: 61.250em) {
+@media only screen and (min-width: 64em) {
     .site-name {
       display: inline;
       float: left;
@@ -193,7 +193,7 @@ ul {
   transition: all 0.2s;
 }
 
-@media only screen and (min-width: 61.250em) {
+@media only screen and (min-width: 64em) {
   .top-navigation li {
     display: inline;
     margin-right: 25px;
@@ -285,7 +285,7 @@ ul {
     transform: rotate3d(0, 0, 1, -45deg)
 }
 
-@media only screen and (min-width: 61.250em) {
+@media only screen and (min-width: 64em) {
   .nav-button {
       display: none
   }
@@ -306,7 +306,7 @@ ul {
   transition: max-height .4s
 }
 
-@media only screen and (min-width: 61.250em) {
+@media only screen and (min-width: 64em) {
   .top-navigation ul {
       max-height: 30em;
   }
@@ -364,7 +364,7 @@ aside .asps-logo {
   display: block;
 }
 
-@media only screen and (min-width: 61.250em) {
+@media only screen and (min-width: 64em) {
   aside {
     display: inline;
     float: left;
@@ -441,6 +441,11 @@ aside .asps-logo {
 }
 
 /*__________ ADMIN STYLE __________*/
+
+#admin_icon {
+  width: 16px;
+  height: 16px;
+}
 
 table a {
   margin-right: 15px;

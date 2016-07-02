@@ -31,6 +31,14 @@
               <li><a href="<?php echo BASE_URL.'/posts/index/blog'?>" class="nav-link">Le blog</a></li>
               <li><a href="#" class="nav-link">Les trucs utiles</a></li>
               <li><a href="#" class="nav-link">Le club</a></li>
+              <li>
+                <a href="#" class="nav-link">
+                  <img src="<?php echo BASE_URL.'/webroot/img/icons/lock.png'?>"
+                       id="admin_icon" 
+                       alt="" 
+                       title="Administration du site"/>
+                </a>
+              </li>
             </ul>
           </nav>
           <!--  [MENU]  --> 
