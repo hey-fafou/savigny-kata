@@ -32,7 +32,7 @@
               <li><a href="#" class="nav-link">Les trucs utiles</a></li>
               <li><a href="#" class="nav-link">Le club</a></li>
               <li>
-                <a href="#" class="nav-link">
+                <a href="<?php echo BASE_URL.'/users/login'?>" class="nav-link">
                   <img src="<?php echo BASE_URL.'/webroot/img/icons/lock.png'?>"
                        id="admin_icon" 
                        alt="" 
