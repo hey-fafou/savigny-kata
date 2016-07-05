@@ -2,11 +2,11 @@
   <div class="description">
     <h1>Zone réservée</h1>
   </div>
-  <form action="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/posts' ?>" method="post">
+  <form action="<?php echo BASE_URL.'/users/login' ?>" method="post">
     <div class="input-wrapper">
       <label for="inputId">Identifiant</label>
       <div class = "input">
-        <input type="text" id="inputId" name="id" value=""/>
+        <input type="text" id="inputId" name="login" value=""/>
       </div>
       <label for="inputPassword">Mot de passe</label>
       <div class = "input">
