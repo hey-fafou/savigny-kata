@@ -22,4 +22,24 @@ class Session {
       return $html;
     }
   }
+
+  public function write($key, $value) {
+    $_SESSION[$key] = $value;
+  }
+
+  public function read($key = NULL) {
+    if ($key) {
+      if (isset($_SESSION[$key])) {
+        return $_SESSION[$key];
+      } else {
+        return false;
+      } 
+    } else {
+      return $_SESSION;
+    }
+  }
+
+  public function isLogged() {
+    return isset($_SESSION['user']->id);
+  }
 }
