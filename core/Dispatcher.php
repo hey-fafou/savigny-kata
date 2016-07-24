@@ -36,8 +36,7 @@ class Dispatcher {
                                     get_class_methods('Controller'));
 
     if (!in_array($action, $controllerMethods)) {
-      $controller = new Controller($this->_request);
-      $controller->e404('Action '.$action.' introuvable dans '.$this->_request->controller);
+      $this->error('L\'action '.$action.' n\'existe pas.');
     }
 
     // Calling the action of the requested controller
@@ -46,6 +45,11 @@ class Dispatcher {
 
     // Then render the view corresponding the action
     $controller->render($action);
+  }
+
+  function error($message) {
+      $controller = new Controller($this->_request);
+      $controller->e404($message);
   }
 
   /**
@@ -58,6 +62,9 @@ class Dispatcher {
 
     // Finding and including the controller file
     $file = ROOT.DS.'controller'.DS.$name.'.php';
+    if (!file_exists($file)) {
+      $this->error('Le controleur '.$this->_request->controller.' n\'existe pas.');
+    }
     require $file;
 
     // Construct controller object with the request
