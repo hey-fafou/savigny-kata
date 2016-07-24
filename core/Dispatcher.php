@@ -37,7 +37,6 @@ class Dispatcher {
 
     if (!in_array($action, $controllerMethods)) {
       $controller = new Controller($this->_request);
-      $controller->Session = new Session();
       $controller->e404('Action '.$action.' introuvable dans '.$this->_request->controller);
     }
 
@@ -63,9 +62,6 @@ class Dispatcher {
 
     // Construct controller object with the request
     $controller = new $name($this->_request);
-
-    // Initilization of the session
-    $controller->Session = new Session();
 
     return $controller;
   }

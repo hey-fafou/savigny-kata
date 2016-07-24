@@ -16,9 +16,18 @@ class Controller {
    * use of it hereby
    */
   function __construct($request) {
-    $this->_request = $request;
+    // Initilization of the session
+    $this->Session = new Session();
+
+    if ($request) {
+      $this->_request = $request;
+    }
+
     if ($this->_request->prefix == 'admin') {
       $this->_layout = 'admin';
+      if (!$this->Session->isLogged()) {
+        $this->redirect(BASE_URL.'/users/login');
+      }
     }
   }
 
