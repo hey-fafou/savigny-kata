@@ -442,7 +442,7 @@ aside .asps-logo {
 
 /*__________ ADMIN STYLE __________*/
 
-#admin_icon {
+.admin_icon {
   width: 16px;
   height: 16px;
 }

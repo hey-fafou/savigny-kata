@@ -33,8 +33,8 @@
               <li><a href="#" class="nav-link">Le club</a></li>
               <li>
                 <a href="<?php echo BASE_URL.'/users/login'?>" class="nav-link">
-                  <img src="<?php echo BASE_URL.'/webroot/img/icons/lock.png'?>"
-                       id="admin_icon" 
+                  <img src="<?php echo BASE_URL.'/webroot/img/icons/unlock.png'?>"
+                       class="admin_icon"
                        alt="" 
                        title="Administration du site"/>
                 </a>
