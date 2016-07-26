@@ -1,6 +1,6 @@
 <div class="body-wrapper">
   <div class="description">
-    <h1>Les dernières actualités</h1>
+    <h1>Les derniers posts</h1>
   </div>
     <?php foreach ($posts as $k => $v) { ?>
       <div class="post">
