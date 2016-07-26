@@ -1,4 +1,4 @@
-<div class="body-wrapper">
+<div class="no-admin body-wrapper">
   <div class="description">
     <h1>Les derniers posts</h1>
   </div>

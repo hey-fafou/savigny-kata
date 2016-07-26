@@ -1,4 +1,4 @@
-<div class="body-wrapper">
+<div class="no-admin body-wrapper">
   <?php $page_title = $post->post_title; ?>
   
   <h2>

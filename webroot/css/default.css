@@ -383,7 +383,7 @@ aside .asps-logo {
     margin-bottom: 1em;
     font-size: 1rem;
   }
-  .body-wrapper {
+  .no-admin.body-wrapper {
     display: inline;
     float: left;
     width: 60%;
