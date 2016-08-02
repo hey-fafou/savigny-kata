@@ -125,9 +125,6 @@ class PostsController extends Controller {
     // If there is a media associated, we delete the media
     if (!empty($var['media'])) {
       $this->MediasModel->delete($var['media']);
-      $this->Session->setFlash('Le contenu et l\'image associée ont bien été supprimés.');
-    } else {
-      $this->Session->setFlash('Le contenu a bien été supprimé.');
     }
 
     $this->redirect(BASE_URL.'/'.array_search('admin', Router::$prefixes).'/posts/index/'.$post_type);
@@ -186,7 +183,6 @@ class PostsController extends Controller {
 
       // Saving post update
       $this->PostsModel->save($_POST);
-      $this->Session->setFlash('Le contenu a bien été modifié.');
     }
 
     // Filter on post with id $post_id and field with formated date
