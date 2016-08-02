@@ -1,4 +1,4 @@
-<div class="body-wrapper">
+<div class="no-admin body-wrapper">
   <div class="description">
     <h1>Zone réservée</h1>
   </div>
