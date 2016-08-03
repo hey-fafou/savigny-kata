@@ -88,7 +88,7 @@ class Model {
     // Join table if set.
     if (isset($param['joins'])) {
       foreach ($param['joins'] as $k => $v) {
-        $sql .= 'INNER JOIN '.$k.' ON '.$k.'.'.$v.' = '.$this->_table.'.'.$this->_primaryKey.' ';
+        $sql .= 'LEFT JOIN '.$k.' ON '.$k.'.'.$v.' = '.$this->_table.'.'.$this->_primaryKey.' ';
       }
     }
 
