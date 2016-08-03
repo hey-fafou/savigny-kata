@@ -226,23 +226,20 @@ class PostsController extends Controller {
       // Need to save the last post id to join media
       $last_post_id = $this->PostsModel->save($_POST);
 
-      // Preparing data to insert in medias table
-      $data = array('post_id' => $last_post_id,
-                    'title' => '',
-                    'file' => '',
-                    'type' => $post_type);
-
       // If a media has been given
       if (!empty($_FILES)) {
         if ($_FILES['img']['error'] == 0) {
-          $data['title'] = $_FILES['img']['name'];
-          $data['file'] = $_FILES['img']['tmp_name'];
+          // Building data to insert in medias table
+          $data = array('post_id' => $last_post_id,
+            'title' => $_FILES['img']['name'],
+            'file' => $_FILES['img']['tmp_name'],
+            'type' => $post_type);
+
+          // Load model media to call its methods
+          $this->loadModel('MediasModel');
+          $this->MediasModel->upload($data);
         }
       }
-
-      // Load model media to call its methods
-      $this->loadModel('MediasModel');
-      $this->MediasModel->upload($data);
 
       // After adding the post, we redirect to admin posts page
       $this->redirect(BASE_URL.'/'.array_search('admin', Router::$prefixes).'/posts/index/'.$post_type);
