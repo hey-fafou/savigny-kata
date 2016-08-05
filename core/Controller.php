@@ -44,6 +44,9 @@ class Controller {
     if ($this->_isRendered) {
       return false;
     } else {
+      // Loading side bloc infos.
+      $this->loadSideInfos();
+
       // Import variable inside vars so they can be used in the view
       extract($this->_vars);
       // If path of the view starts with '/' we send directly the viewName
@@ -58,6 +61,7 @@ class Controller {
 
       // Recording content to be rendered
       ob_start();
+      require ROOT.DS.'view/layout/aside.php';
       require $view;
       // Saving all recorded content into variable
       // that will be printed within the layout wrapper
@@ -110,4 +114,13 @@ class Controller {
     }
     header("Location: ".$url);
   } 
+
+  function loadSideInfos() {
+    // Call LinksController to initialize side bloc.
+    require ROOT.DS.'controller/LinksController.php';
+    $this->loadModel('LinksModel');
+
+    $var['links'] = $this->LinksModel->find(array());
+    $this->set($var);
+  }
 }

@@ -27,9 +27,7 @@
             <ul>
               <li><a href="<?php echo BASE_URL.'/posts'?>" class="nav-link">Les news</a></li>
               <li><a href="#" class="nav-link">Les photos</a></li>
-              <li><a href="#" class="nav-link">Les vidéos</a></li>
               <li><a href="<?php echo BASE_URL.'/posts/index/blog'?>" class="nav-link">Le blog</a></li>
-              <li><a href="#" class="nav-link">Les trucs utiles</a></li>
               <li><a href="#" class="nav-link">Le club</a></li>
               <li>
                 <a href="<?php echo BASE_URL.'/users/login'?>" class="nav-link">
@@ -45,30 +43,6 @@
         </div>
       </div>
       <!-- [HEADER] -->
-
-      <!-- [ASIDE]  -->
-      <aside>
-        <div class="address">
-          <h3>Adresse</h3>
-          Gymnase Les Régalles<br/>
-          Rue des oiseaux<br/>
-          77176 - Savigny-le-Temple<br/>
-        </div>
-        <div class="external-links">
-          <h3>Liens externes</h3>
-            <ul>
-              <li><a href = "http://www.ffkama.fr/" class="blue-link">La FFKAMA</a></li>
-              <li><a href = "http://www.ffkarate.fr/seineetmarne/" class="blue-link">La ligue 77</a></li>
-              <li><a href = "http://http://www.aspsavigny.fr/" class="blue-link">L'ASPS</a></li>
-            </ul>
-        </div>
-        <div class="asps-logo">
-          <a href="http://www.aspsavigny.fr" target="blank">
-            <img src="<?php echo BASE_URL.'/webroot/img/logo/asps.jpg'?>" alt="" title="Lien vers le site de l'ASPS"/>
-          </a>
-        </div>
-      </aside>
-      <!-- [ASIDE]  -->
 
       <?php echo $content_for_layout; ?>
     </div>
