@@ -61,7 +61,10 @@ class Controller {
 
       // Recording content to be rendered
       ob_start();
-      require ROOT.DS.'view/layout/aside.php';
+      // Load aside only if not on admin
+      if ($this->_layout != 'admin') {
+        require ROOT.DS.'view/links/aside.php';
+      }
       require $view;
       // Saving all recorded content into variable
       // that will be printed within the layout wrapper
@@ -116,10 +119,7 @@ class Controller {
   } 
 
   function loadSideInfos() {
-    // Call LinksController to initialize side bloc.
-    require ROOT.DS.'controller/LinksController.php';
     $this->loadModel('LinksModel');
-
     $var['links'] = $this->LinksModel->find(array());
     $this->set($var);
   }
