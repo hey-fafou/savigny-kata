@@ -119,8 +119,12 @@ class Controller {
   } 
 
   function loadSideInfos() {
+    $linksTypes = array('websites', 'documents', 'networks');
     $this->loadModel('LinksModel');
-    $var['links'] = $this->LinksModel->find(array());
+    foreach ($linksTypes as $k => $v) {
+      $filters = array('links' => array('type' => $v));
+      $var[$v] = $this->LinksModel->find(array('filters' => $filters));
+    }
     $this->set($var);
   }
 }
