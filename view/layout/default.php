@@ -25,7 +25,7 @@
               menu
             </button>
             <ul>
-              <li><a href="<?php echo BASE_URL.'/posts'?>" class="nav-link">Les news</a></li>
+              <li><a href="<?php echo BASE_URL.'/posts/index/news'?>" class="nav-link">Les news</a></li>
               <li><a href="#" class="nav-link">Les photos</a></li>
               <li><a href="<?php echo BASE_URL.'/posts/index/blog'?>" class="nav-link">Le blog</a></li>
               <li><a href="#" class="nav-link">Le club</a></li>

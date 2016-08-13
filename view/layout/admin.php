@@ -32,7 +32,7 @@
               menu
             </button> 
             <ul>
-              <li><a href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/posts'?>" class="nav-link">Les news</a></li>
+              <li><a href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/posts/index/news'?>" class="nav-link">Les news</a></li>
               <li><a href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/posts/index/blog'?>" class="nav-link">Le blog</a></li>
               <li><a href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/links/index'?>" class="nav-link">Les liens</a></li>
               <li><a href="<?php echo BASE_URL.'/posts'?>" class="nav-link">Le site</a></li>

@@ -16,20 +16,21 @@ class Config {
 // Admin prefix declaration
 Router::setPrefix('sudo', 'admin');
 
-$url = $_SERVER['REQUEST_URI'];
+$url = "";
+if (isset($_GET['url'])) {
+  $url = $_GET['url'];
+} 
 
-// expected url: /savigny-kata/controller/action/param1/param2/
-// Route 1: BASE_URL => /savigny-kata
-Router::connect('([a-z\-]+)', $url, 'base');
+// expected url: controller/action/param1/param2/
 
-// Route 2: Prefix
+// Route 1: Prefix
 Router::checkPrefix('(^[a-z]+)', $url);
 
-// Route 3: Controller
+// Route 2: Controller
 Router::connect('(^[a-z]+)', $url, 'controller');
 
-// Route 4: Action
+// Route 3: Action
 Router::connect('(^[a-z]+)', $url, 'action');
 
-// Route 5: Parameters
+// Route 4: Parameters
 Router::connect('(^[a-zA-Z0-9/]+$)', $url, 'parameters');

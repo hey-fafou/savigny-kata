@@ -1,4 +1,4 @@
 RewriteEngine On
 
 # Redirect all URL to webroot
-RewriteRule (.*) webroot/$1 [L]
+RewriteRule ^(.*)$ webroot/$1 [L]
