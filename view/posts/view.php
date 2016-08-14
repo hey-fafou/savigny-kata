@@ -7,7 +7,7 @@
   </h2>
   
   <?php if (($post->media_file != '') && ($post->media_title != '')) {
-    echo "<img src=\"".$post->media_file.'/'.$post->media_title." alt = \"\" title=\"".$post->media_title."\"/>";
+    echo "<img src=\"".$post->media_file.'/'.$post->media_title."\" alt = \"\" title=\"".$post->media_title."\"/>";
     } ?>
   <?php echo nl2br($post->post_content); ?>
 </div>
