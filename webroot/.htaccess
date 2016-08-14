@@ -6,5 +6,8 @@ RewriteCond %{REQUEST_FILENAME} !-d
 # If file is not found
 RewriteCond %{REQUEST_FILENAME} !-f
 
+# Append query string to redirection
+RewriteCond %{QUERY_STRING} ^(.*)$
+
 # We redirect request toward index.php
-RewriteRule ^(.*)$ index.php?url=$1 [L]
+RewriteRule ^(.*)$ index.php?url=$1&%1 [L]
