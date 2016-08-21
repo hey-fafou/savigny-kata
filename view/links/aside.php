@@ -14,18 +14,18 @@
         } ?>
       </ul>
   </div>
-  <div class="external-links">
-    <h3>Liens externes</h3>
-      <ul>
-      <?php foreach ($websites as $k => $v) { 
-        echo "<li><a href = \"".$v->link."\" class=\"blue-link\">".$v->title."</a></li>";
-        } ?>
-      </ul>
-  </div>
   <div class="social-networks">
     <h3>Réseaux sociaux</h3>
       <ul>
       <?php foreach ($networks as $k => $v) { 
+        echo "<li><a href = \"".$v->link."\" class=\"blue-link\">".$v->title."</a></li>";
+        } ?>
+      </ul>
+  </div>
+  <div class="external-links">
+    <h3>Liens externes</h3>
+      <ul>
+      <?php foreach ($websites as $k => $v) { 
         echo "<li><a href = \"".$v->link."\" class=\"blue-link\">".$v->title."</a></li>";
         } ?>
       </ul>
