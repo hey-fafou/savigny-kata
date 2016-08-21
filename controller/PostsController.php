@@ -179,7 +179,7 @@ class PostsController extends Controller {
     if (!empty($_POST)) {
       // When adding a post, a media can be added. Therefore we had to
       // define MAX_FILE_SIZE input, and we now have to remove it from $_POST
-      array_pop($_POST);  
+      unset($_POST['MAX_FILE_SIZE']);  
 
       // Saving post update
       $this->PostsModel->save($_POST);
@@ -221,7 +221,7 @@ class PostsController extends Controller {
     if (!empty($_POST)) {
       // When adding a post, a media can be added. Therefore we had to
       // define MAX_FILE_SIZE input, and we now have to remove it from $_POST
-      array_pop($_POST);  
+      unset($_POST['MAX_FILE_SIZE']);  
 
       // Need to save the last post id to join media
       $last_post_id = $this->PostsModel->save($_POST);

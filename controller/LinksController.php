@@ -47,7 +47,7 @@ class LinksController extends Controller {
     if (!empty($_POST)) {
       // When adding a document we have to define MAX_FILE_SIZE input, 
       // and we now have to remove it from $_POST
-      array_pop($_POST);  
+      unset($_POST['MAX_FILE_SIZE']);  
       $_POST['link'] .= '/'.$_POST['title'];
       $this->LinksModel->save($_POST);
 
@@ -67,5 +67,12 @@ class LinksController extends Controller {
     $var['title'] = $title;
     $var['link_type'] = $link_type;
     $this->set($var);
+  }
+
+  function admin_edit($link_type = "", $link_id = 0) {
+    // Checking $post_id
+    if (!is_numeric($link_id) || $link_id <= 0) {
+      $link_id = 0;
+    }
   }
 }
