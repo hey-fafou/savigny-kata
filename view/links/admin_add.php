@@ -8,16 +8,16 @@
       <div class = "input">
         <input type="text" id="inputTitle" name="title" value=""/>
       </div>
-      <?php if ($title == "lien") {
+      <?php if ($link_type == "websites") {
             echo "<label for=\"inputLink\">Adresse du site</label>
                   <div class = \"input\">
                     <input type=\"text\" id=\"inputLink\" name=\"link\" value=\"\"/>
                   </div>";
-          } else if ($title == "document") {
+          } else if ($link_type == "documents") {
             echo "<input type=\"hidden\" name=\"link\" value=\"".BASE_URL."/webroot/doc/\"/>";
           }?>
       <input type="hidden" name="type" value="<?php echo $link_type ?>"/>
-      <?php if ($title == "document") {
+      <?php if ($link_type == "documents") {
               echo "<label for\"inputDocument\">Document</label>
                     <div class =\"input\">
                       <input type=\"hidden\" name=\"MAX_FILE_SIZE\" value=\"4194304\" />

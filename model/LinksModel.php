@@ -12,8 +12,13 @@ class LinksModel extends Model {
 
     // Move file to destination dir
     if (!move_uploaded_file($data['file'], $dest_dir.'/'.$data['title'])) {
-      die('Echec lors du déplacement de '.$data['file'].' vers '.$dest_dir.'/'.$file_name);
+      die('Echec lors du déplacement de '.$data['file'].' vers '.$dest_dir.'/'.$data['title']);
     }
+  }
+
+  public function update($data) {
+    unlink($_SERVER['DOCUMENT_ROOT'].$data['old']);
+    $this->upload($data);
   }
 
   /*
