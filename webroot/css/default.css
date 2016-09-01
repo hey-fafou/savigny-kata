@@ -325,7 +325,7 @@ aside {
 }
 
 aside div {
-  margin-bottom: 3em;
+  margin-bottom: 2em;
 }
 
 aside h3 {
@@ -335,6 +335,10 @@ aside h3 {
 
 aside .external-links li {
   list-style-type: square;
+}
+
+aside .social-networks img {
+  margin-left: 0.3em;
 }
 
 aside .asps-logo {
