@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
   <head>
     <meta http-equiv="Content-Type" content="test/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width" />
     <title><?php echo isset($page_title) ? $page_title : "Savigny-kata"; ?></title>
     <link rel="stylesheet" href="<?php echo BASE_URL.'/webroot/css/default.css' ?>"/>
     <link href='https://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
