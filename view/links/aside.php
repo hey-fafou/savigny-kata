@@ -10,12 +10,12 @@
     <h3>Réseaux sociaux</h3>
       <?php foreach ($networks as $k => $v) { 
               if ($v->title == "Facebook") {
-                echo "<a href = \"".$v->link."\">
+                echo "<a href = \"".$v->link."\" target=\"_blank\">
                          <img src=\"".BASE_URL.'/webroot/img/icons/facebook.png'."\" alt=\"\" title=\"Page Facebook\"/>
                       </a> ";
               }
               if ($v->title == "Youtube") {
-                echo "<a href = \"".$v->link."\">
+                echo "<a href = \"".$v->link."\" target=\"_blank\">
                           <img src=\"".BASE_URL.'/webroot/img/icons/youtube.png'."\" alt=\"\" title=\"Chaine Youtube\"/>
                       </a>";
               }
@@ -25,7 +25,7 @@
     <h3>Documents</h3>
       <ul>
       <?php foreach ($documents as $k => $v) { 
-            echo "<li><a href = \"".$v->link."\" class=\"blue-link\">".$v->title."</a></li>";
+            echo "<li><a href = \"".$v->link."\"  target=\"_blank\" class=\"blue-link\">".$v->title."</a></li>";
         } ?>
       </ul>
   </div>
@@ -33,7 +33,7 @@
     <h3>Liens externes</h3>
       <ul>
       <?php foreach ($websites as $k => $v) { 
-        echo "<li><a href = \"".$v->link."\" class=\"blue-link\">".$v->title."</a></li>";
+        echo "<li><a href = \"".$v->link."\" target=\"_blank\" class=\"blue-link\">".$v->title."</a></li>";
         } ?>
       </ul>
   </div>
