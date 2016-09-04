@@ -6,8 +6,7 @@
 class MediasController extends Controller {
   /**
    * Loads appropriate model and request to database
-   * for rendering page with posts.
-   * @param [in] $post_type type of the posts to print.
+   * for rendering photos page.
    */
   function index() {
   }
