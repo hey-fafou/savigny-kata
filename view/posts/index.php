@@ -12,7 +12,7 @@
           echo "<img src=\"".$v->media_file.'/'.$v->media_title."\" alt = \"\" title=\"".$v->media_title."\"/>";
           } ?>
         <p class="post-content"><?php echo $v->post_content; ?></p>
-        <p class="read-more"><a href="<?php echo BASE_URL.'/posts/view/'.$v->post_type.'/'.$v->post_id; ?>" class="blue-link">Lire la suite &rarr;</a></p>
+        <p class="read-more"><a href="<?php echo BASE_URL.'/posts/view/'.$v->post_type.'/'.$v->post_id; ?>" class="grey-link">Lire la suite &rarr;</a></p>
       </div> 
     <?php } ?>
     <?php pagination($page, $pages, "posts") ?>

@@ -109,6 +109,16 @@ ul {
   font-weight: bold;
 }
 
+.grey-link {
+  color: #798081;
+  font-weight: bold;
+}
+
+.red-link {
+  color: #FE1B00;
+  font-weight: bold;
+}
+
 .description {
   margin-bottom: 4em;
 }
@@ -310,6 +320,20 @@ ul {
 @media only screen and (min-width: 59em) {
   .top-navigation ul {
       max-height: 30em;
+  }
+}
+
+/*__________ BANNER STYLE _________*/
+.banner {
+  display: none
+}
+
+@media only screen and (min-width: 59em) {
+  .banner {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+    width: auto\9; /* ie8 */
   }
 }
 

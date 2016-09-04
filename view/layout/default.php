@@ -29,7 +29,7 @@
               <li><a href="<?php echo BASE_URL.'/posts/index/news'?>" class="nav-link">Les news</a></li>
               <li><a href="<?php echo BASE_URL.'/medias/index'?>" class="nav-link">Les photos</a></li>
               <li><a href="<?php echo BASE_URL.'/posts/index/blog'?>" class="nav-link">Le blog</a></li>
-              <li><a href="#" class="nav-link">Le club</a></li>
+              <li><a href="<?php echo BASE_URL.'/club/index'?>" class="nav-link">Le club</a></li>
               <li>
                 <a href="<?php echo BASE_URL.'/users/login'?>" class="nav-link">
                   <img src="<?php echo BASE_URL.'/webroot/img/icons/unlock.png'?>"
@@ -44,6 +44,13 @@
         </div>
       </div>
       <!-- [HEADER] -->
+
+      <!-- [BANNER] -->
+      <img src="<?php echo BASE_URL.'/webroot/img/banner.png'?>"
+                       class="banner"
+                       alt="" 
+                       title="Dojo"/>
+      <!-- [BANNER] -->
 
       <?php echo $content_for_layout; ?>
     </div>
