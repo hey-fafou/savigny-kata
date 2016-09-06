@@ -123,6 +123,10 @@ ul {
   margin-bottom: 4em;
 }
 
+.sensei {
+  min-width: 600px;
+}
+
  /*__________ HEADER STYLE _________*/
 .header-wrapper {
   margin: 0px auto;
