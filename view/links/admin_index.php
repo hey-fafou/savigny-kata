@@ -28,7 +28,7 @@
               Editer
             </a>
             <a onclick="return confirm('Voulez-vous vraiment supprimer ce contenu ?')"
-               href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/links/delete/'.$v->type.'/'.$v->id; ?>" class="blue-link">
+               href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/links/delete/'.$v->type.'/'.$v->id; ?>" class="red-link">
               Supprimer
             </a>
           </td>
@@ -85,7 +85,7 @@
           <td></td>
           <td></td>
           <td>
-            <a href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/links/add/websites' ?>" class="grey-link">
+            <a href="<?php echo BASE_URL.'/'.array_search('admin', Router::$prefixes).'/links/add/websites' ?>" class="blue-link">
               Ajouter
             </a>
           </td>
