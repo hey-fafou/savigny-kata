@@ -27,6 +27,6 @@ class UsersController extends Controller {
 
   function logout() {
     unset($_SESSION['user']);
-    $this->redirect(BASE_URL);
+    $this->redirect(BASE_URL.'/posts/index/news');
   }
 }

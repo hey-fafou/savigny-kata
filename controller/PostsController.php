@@ -175,16 +175,6 @@ class PostsController extends Controller {
 
     $this->loadModel('PostsModel');
 
-    // If method post has been called
-    if (!empty($_POST)) {
-      // When adding a post, a media can be added. Therefore we had to
-      // define MAX_FILE_SIZE input, and we now have to remove it from $_POST
-      unset($_POST['MAX_FILE_SIZE']);  
-
-      // Saving post update
-      $this->PostsModel->save($_POST);
-    }
-
     // Filter on post with id $post_id and field with formated date
     $filters = array('posts' => array('type' => $post_type, 
                                       'id' => $post_id));
@@ -194,15 +184,22 @@ class PostsController extends Controller {
       'filters' => $filters,
       'fields' => $fields));
 
+    // If method post has been called
+    if (!empty($_POST)) {
+      // When adding a post, a media can be added. Therefore we had to
+      // define MAX_FILE_SIZE input, and we now have to remove it from $_POST
+      unset($_POST['MAX_FILE_SIZE']);  
+
+      // Saving post update
+      $this->PostsModel->save($_POST);
+      $this->redirect(BASE_URL.'/'.array_search('admin', Router::$prefixes).'/posts/index/'.$post_type);
+    }
+
     // There is two manner to get in this function :
     // 1) When a post is selected for edition
     // 2) When update is submitted
     // If $post_id of the post to edit exist, will pre-fill the form, else we redirect.
-    if (empty($var['post'])) {
-      $this->redirect(BASE_URL.'/'.array_search('admin', Router::$prefixes).'/posts/index/'.$post_type);
-    } else {
-      $this->set($var);
-    }
+    $this->set($var);
   }
 
   /**
